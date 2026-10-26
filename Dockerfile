@@ -9,11 +9,13 @@
 FROM --platform=linux/amd64 mambaorg/micromamba:1.5.10
 
 RUN micromamba install -y -n base -c conda-forge -c bioconda \
-        python=3.11 make \
+        python=3.11 make git \
         pandas=3.1 numpy=2.4 pysam=0.24 matplotlib=3.11 \
         r-base=4.5 bioconductor-dexseq=1.56.0 bioconductor-stager=1.32.0 \
         bioconductor-drimseq=1.38.0 bioconductor-edger=4.8.2 \
     && micromamba clean --all --yes
 
 ARG MAMBA_DOCKERFILE_ACTIVATE=1
+# the checkout is mounted at /work; let git read it so the manifest records the commit
+RUN git config --global --add safe.directory /work
 WORKDIR /work

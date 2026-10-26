@@ -60,7 +60,7 @@ def family_block(mode, out_root):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--results", default="results/v2")
+    ap.add_argument("--results", default="results")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
     R = args.results
@@ -89,8 +89,8 @@ def main():
               "based on replicate-aware changes in the end proportions of the reads that carry the gene (reads covering its CDS) and "
               "predefined criteria for effect size (30 points of usage), reproducibility (replicates separated; same cluster, same "
               f"direction under two other cluster definitions) and origin (20 or more such reads at the cluster). {both} of them are "
-              f"found again with the intergenic windows. The list is `docs/v2/strong_end_usage_nanopore.tsv`; the figures are in "
-              "`docs/v2/figures/index_strong.html`. The broader discovery lists below are the candidates this rule was applied to.", ""]
+              f"found again with the intergenic windows. The list is `strong_end_usage_nanopore.tsv` beside this file; the figures are in "
+              "`figures/index_strong.html`. The broader discovery lists below are the candidates this rule was applied to.", ""]
     L += [f"In a prespecified family of {int(fam_n['in_family'].sum())} genes (nanopore windows) and {int(fam_i['in_family'].sum())} genes",
           f"(intergenic windows) with at least 10 poly(A) read ends in every replicate, end clusters were defined from the pooled",
           f"ends of all replicates and tested for a change in relative usage between bloodstream (BSF) and procyclic (PCF) forms",

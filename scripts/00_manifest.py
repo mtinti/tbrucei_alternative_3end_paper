@@ -6,6 +6,7 @@ their checksums and the completion time. Every number in docs/ can then be
 traced to one recorded run.
 """
 import argparse
+import glob
 import hashlib
 import json
 import os
@@ -56,7 +57,16 @@ def versions():
         out["git_dirty"] = bool(subprocess.run(["git", "status", "--porcelain", "--", "scripts", "run_analysis.sh"],
                                                capture_output=True, text=True).stdout.strip())
     except Exception:
-        pass
+        out["git_commit"] = ""
+    if not out["git_commit"]:
+        print("manifest: git is not available or this is not a checkout; the commit is not recorded", file=sys.stderr)
+    # the code that ran, independent of git: one hash over the scripts and the driver
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    code = sorted(glob.glob(os.path.join(root, "scripts", "*.py")) + glob.glob(os.path.join(root, "scripts", "*.R")) + [os.path.join(root, "run_analysis.sh")])
+    h = hashlib.sha256()
+    for path in code:
+        h.update(os.path.relpath(path, root).encode()); h.update(open(path, "rb").read())
+    out["code_sha256"] = h.hexdigest()
     return out
 
 

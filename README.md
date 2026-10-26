@@ -2,7 +2,10 @@
 
 Code and data for the analysis of differential poly(A) site usage between
 bloodstream-form (BSF) and procyclic-form (PCF) *Trypanosoma brucei*, from
-direct RNA nanopore sequencing, three replicates per stage.
+direct RNA nanopore sequencing, three replicates per stage. The reads are
+those of Kruse and Göringer (Genes 2023, ENA PRJEB60364), who used them to
+catalogue the transcriptome and its long non-coding RNAs; whether genes end
+their transcripts at different sites in the two stages was not asked there.
 
 The question: for each gene, do its transcripts end at a different place in
 the two life stages? A nanopore read of a poly(A)-tailed RNA ends where the
@@ -192,11 +195,19 @@ Makefile         the commands run by make all
 | Direct RNA nanopore reads, 6 runs | European Nucleotide Archive | ERR10957780 to ERR10957785 (`upstream/README.md` maps runs to replicates) |
 | Alignment files (4 BAM), complete results of one run, figures of every supported gene | Zenodo | (to be assigned) |
 
+This is a staged release: until the Zenodo record exists, the four alignment
+files are not downloadable and `make all` cannot run outside the authors'
+machines. The tables in `expected/` and the figures are complete.
+
 `scripts/make_zenodo_archive.sh` builds the Zenodo data archive from a
 complete run.
 
 ## Citation
 
+- Kruse E, Göringer HU. Nanopore-based direct RNA sequencing of the
+  *Trypanosoma brucei* transcriptome identifies novel lncRNAs. Genes 2023;
+  14(3):610. [doi:10.3390/genes14030610](https://doi.org/10.3390/genes14030610)
+  (the sequencing data).
 - Tinti M. tbrucei_alternative_3end_paper: code and data for the analysis of
   alternative 3' end usage between *Trypanosoma brucei* life stages from
   direct RNA nanopore sequencing. Zenodo (DOI to be assigned).

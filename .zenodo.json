@@ -24,7 +24,13 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://www.ebi.ac.uk/ena/browser/view/ERR10957780",
+      "identifier": "10.3390/genes14030610",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://www.ebi.ac.uk/ena/browser/view/PRJEB60364",
       "relation": "isSupplementTo",
       "resource_type": "dataset"
     }

@@ -19,7 +19,8 @@ discovery rate (OFDR) of 5 percent.
 
 Bloodstream-form (BSF) and procyclic-form (PCF) *T. brucei*, three biological
 replicates each, sequenced by direct RNA nanopore sequencing (kit SQK-RNA002,
-flow cell FLO-MIN106; ENA ERR10957780 to ERR10957785). Reads were basecalled
+flow cell FLO-MIN106; ENA ERR10957780 to ERR10957785, project PRJEB60364,
+Kruse and Göringer, Genes 2023, doi:10.3390/genes14030610). Reads were basecalled
 with Guppy and aligned with minimap2 (`-ax splice -uf -k14 -G 10000`) to the
 TREU927 genome (TriTrypDB release 56). Nanopolish estimated the poly(A) tail
 of every read; reads with `qc_tag` PASS and a tail longer than 25 nt are the

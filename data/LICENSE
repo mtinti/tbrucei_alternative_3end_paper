@@ -6,6 +6,10 @@ appropriate credit by citing the paper and this archive (see CITATION.cff).
 
 Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
 
-The genome and protein sequences in reference/ are from TriTrypDB releases 68
-and 51 (https://tritrypdb.org) and are redistributed here for reproducibility;
-cite TriTrypDB when using them.
+The genome in data/genome/ is the Trypanosoma brucei TREU927 assembly of
+TriTrypDB release 56 (https://tritrypdb.org) with Tb427 VSG sequences added,
+redistributed here for reproducibility; cite TriTrypDB when using it. The
+annotated non-coding RNA genes in data/annotation/ are from Ensembl Protists
+release 116. The sequencing reads were produced by Kruse and Goringer
+(Genes 2023, ENA PRJEB60364); the read ids and end positions derived from
+them are redistributed under the same CC BY 4.0 terms.
