@@ -172,8 +172,11 @@ indexes (about 2 hours). To run a single stage, replace `make all` with
 The analysis has no random step. `make verify` requires the family, the
 supported genes of both analyses, the eligible genes, the flagged genes with
 their qualifying cluster and change, and the sensitivity table to be
-identical to the published ones in `expected/`. The published run and its
-software versions are recorded in `expected/run_manifest.json`.
+identical to the published ones in `expected/`. The published tables come
+from `make all` inside the Docker image at the commit recorded in
+`expected/run_manifest.json`. The same run on macOS (Apple silicon, same
+package versions, no Docker) gives every gene set, record and label
+identical; p values differ in the last digits only.
 
 ## Repository contents
 

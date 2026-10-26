@@ -1,0 +1,11 @@
+partition	group_A	true_split	genes_screened	genes_confirmed	features_confirmed
+perm_bs_rep_1_bs_rep_2_bs_rep_3	bs_rep_1,bs_rep_2,bs_rep_3	True	1197	230	413
+perm_bs_rep_1_bs_rep_2_pc_rep_1	bs_rep_1,bs_rep_2,pc_rep_1	False	1197	0	0
+perm_bs_rep_1_bs_rep_2_pc_rep_2	bs_rep_1,bs_rep_2,pc_rep_2	False	1197	2	3
+perm_bs_rep_1_bs_rep_2_pc_rep_3	bs_rep_1,bs_rep_2,pc_rep_3	False	1197	0	0
+perm_bs_rep_1_bs_rep_3_pc_rep_1	bs_rep_1,bs_rep_3,pc_rep_1	False	1197	0	0
+perm_bs_rep_1_bs_rep_3_pc_rep_2	bs_rep_1,bs_rep_3,pc_rep_2	False	1197	0	0
+perm_bs_rep_1_bs_rep_3_pc_rep_3	bs_rep_1,bs_rep_3,pc_rep_3	False	1197	0	0
+perm_bs_rep_1_pc_rep_1_pc_rep_2	bs_rep_1,pc_rep_1,pc_rep_2	False	1197	0	0
+perm_bs_rep_1_pc_rep_1_pc_rep_3	bs_rep_1,pc_rep_1,pc_rep_3	False	1197	0	0
+perm_bs_rep_1_pc_rep_2_pc_rep_3	bs_rep_1,pc_rep_2,pc_rep_3	False	1197	0	0

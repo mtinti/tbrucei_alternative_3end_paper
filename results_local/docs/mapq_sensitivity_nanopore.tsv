@@ -1,0 +1,7 @@
+rule	min_mapq	secondary_rule	assigned_reads	uncertain_no_CDS_overlap	uncertain_low_mapping_quality	uncertain_equal_placement_elsewhere	uncertain_covers_another_CDS	eligible_M	supported	strong_X	in_primary_set	lost_vs_primary	gained_vs_primary	lost_genes	gained_genes	in_every_run	primary_genes_not_in_every_run
+primary	20	yes	821678	134720	232930	2478	9570	742	138	52	52	0	0			50	Tb927.10.15100;Tb927.6.5120
+mapq1	1	yes	925368	134720	107070	24292	9926	789	150	52	51	1	1	Tb927.6.5120	Tb927.3.3490	50	
+mapq10	10	yes	851240	134720	200598	5116	9702	753	141	51	51	1	0	Tb927.6.5120		50	
+mapq30	30	yes	807465	134720	248294	1442	9455	739	140	52	52	0	0			50	
+mapq60	60	yes	722641	134720	335119	385	8511	710	135	52	51	1	1	Tb927.10.15100	Tb927.8.2560	50	
+mapq20_no_secondary_rule	20	no	823440	134720	232930	0	10286	745	139	52	52	0	0			50	

@@ -1,5 +1,5 @@
 {
- "started": "2026-10-26T20:40:58.755637+00:00",
+ "started": "2026-10-26T21:53:29.469308+00:00",
  "status": "completed",
  "command": "start --out results/docs/run_manifest.json --inputs results/inputs/merged_fixed_6.gtf results/inputs/tb927_56.fa.fai results/inputs/tb927_56.fa data/annotation/ensembl116_noncoding_genes.bed data/bam/bs.filter_polyA_SL_tb927.sorted.bam data/bam/pc.filter_polyA_SL_tb927.sorted.bam data/bam/bs.filter_polyA_tb927.sorted.bam data/bam/pc.filter_polyA_tb927.sorted.bam results/inputs/end_sites/bs_rep_1.end_sites.bed results/inputs/end_sites/bs_rep_2.end_sites.bed results/inputs/end_sites/bs_rep_3.end_sites.bed results/inputs/end_sites/pc_rep_1.end_sites.bed results/inputs/end_sites/pc_rep_2.end_sites.bed results/inputs/end_sites/pc_rep_3.end_sites.bed results/inputs/read_ids/bs_rep_1.polyA_read_ids.txt results/inputs/read_ids/bs_rep_2.polyA_read_ids.txt results/inputs/read_ids/bs_rep_3.polyA_read_ids.txt results/inputs/read_ids/pc_rep_1.polyA_read_ids.txt results/inputs/read_ids/pc_rep_2.polyA_read_ids.txt results/inputs/read_ids/pc_rep_3.polyA_read_ids.txt --options min_ends=10 pad=100 smooth=11 peak_min=5 extend=15 valley=0.5 always_merge=15 support=5x2 primary=merge30_peak0.02 sensitivity=merge50_peak0.05,merge20_peak0.01 fdr=0.05 model=DEXSeq+stageR events=min_aligned_length=200 tolerance=60 link_distance=100 min_reads=20 min_informative=10 min_cluster=10 min_fraction=0.15 sharp_start=0 (sensitivity 5) catalogue=start_tolerance=100 end_tolerance=60 expression_filter=5 reads in 2 replicates; abundance: edgeR QL, TMM over genes and records assumption=the six libraries are exchangeable apart from stage; no batch recorded",
  "options": {
@@ -20,13 +20,13 @@
   "assumption": "the six libraries are exchangeable apart from stage; no batch recorded"
  },
  "versions": {
-  "python": "3.11.17",
-  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "python": "3.11.18",
+  "platform": "Linux-6.10.14-linuxkit-x86_64-with-glibc2.36",
   "pandas": "3.1.0",
   "numpy": "2.4.6",
-  "scipy": "1.17.1",
-  "sklearn": "1.9.1",
-  "statsmodels": "0.15.0",
+  "scipy": "not installed",
+  "sklearn": "not installed",
+  "statsmodels": "not installed",
   "pysam": "0.24.1",
   "matplotlib": "3.11.2",
   "R": "R version 4.5.3 (2026-03-11) ",
@@ -34,27 +34,28 @@
   "stageR": "1.32.0 ",
   "DEXSeq": "1.56.0 ",
   "edgeR": "4.8.2",
-  "git_commit": "HEAD",
-  "git_dirty": true
+  "git_commit": "f3d93fce04cd77b85867856955fb40696ea9c1a2",
+  "git_dirty": false,
+  "code_sha256": "f8f600ae11998a75e39d2dd4484fd4bedcac003994a278440d7512db1a484f54"
  },
  "inputs": [
   {
    "path": "results/inputs/merged_fixed_6.gtf",
    "bytes": 3371070,
    "sha256": "295f91fbb145caa1cf920b4faa942eb7a5ac022ab6f11480306d1b2ed36b0edd",
-   "modified": "2026-10-26T20:40:58.146578+00:00"
+   "modified": "2026-10-26T21:53:27.653127+00:00"
   },
   {
    "path": "results/inputs/tb927_56.fa.fai",
    "bytes": 7174,
    "sha256": "a416508253744c435a0d9a49377ef8534fb0b7e336e7c0fa4c8a0650c012c244",
-   "modified": "2026-10-26T20:40:58.444171+00:00"
+   "modified": "2026-10-26T21:53:28.261305+00:00"
   },
   {
    "path": "results/inputs/tb927_56.fa",
    "bytes": 37186964,
    "sha256": "cdab49b9e316916890630f96d9ed1fb4263638a5e7f5f080f077712d494b3fa8",
-   "modified": "2026-10-26T20:40:58.195767+00:00"
+   "modified": "2026-10-26T21:53:27.915827+00:00"
   },
   {
    "path": "data/annotation/ensembl116_noncoding_genes.bed",
@@ -90,382 +91,382 @@
    "path": "results/inputs/end_sites/bs_rep_1.end_sites.bed",
    "bytes": 6548783,
    "sha256": "ef5b4ef627b6760fabb8436d477dae5326a2f4597b85fa2472f5a856b22ccc10",
-   "modified": "2026-10-26T20:40:58.464133+00:00"
+   "modified": "2026-10-26T21:53:28.331070+00:00"
   },
   {
    "path": "results/inputs/end_sites/bs_rep_2.end_sites.bed",
    "bytes": 7136885,
    "sha256": "31d2a636d1ae727327b452193bb4c1e2327461445e4baad1e2cf17496f5169b3",
-   "modified": "2026-10-26T20:40:58.514062+00:00"
+   "modified": "2026-10-26T21:53:28.542873+00:00"
   },
   {
    "path": "results/inputs/end_sites/bs_rep_3.end_sites.bed",
    "bytes": 5382725,
    "sha256": "3ba960794b1de9d283c1015db7648172e97a338c48d9218c44004ecf01de4bae",
-   "modified": "2026-10-26T20:40:58.568875+00:00"
+   "modified": "2026-10-26T21:53:28.753375+00:00"
   },
   {
    "path": "results/inputs/end_sites/pc_rep_1.end_sites.bed",
    "bytes": 3167641,
    "sha256": "7a0b8eaa348d559355e52756dc34fcb75cd0b2a93f90d13d52f9ac32e02dbeea",
-   "modified": "2026-10-26T20:40:58.608021+00:00"
+   "modified": "2026-10-26T21:53:28.914058+00:00"
   },
   {
    "path": "results/inputs/end_sites/pc_rep_2.end_sites.bed",
    "bytes": 3774991,
    "sha256": "071e07d53b7144b8b5fecd61cf78fc95d7e66b19417713dcbfd149f734748830",
-   "modified": "2026-10-26T20:40:58.636257+00:00"
+   "modified": "2026-10-26T21:53:29.030430+00:00"
   },
   {
    "path": "results/inputs/end_sites/pc_rep_3.end_sites.bed",
    "bytes": 3979211,
    "sha256": "f3af6f8e45507e882049c1250c795019fbcda1b0808ade354a6fd0f58525bfb1",
-   "modified": "2026-10-26T20:40:58.666670+00:00"
+   "modified": "2026-10-26T21:53:29.155814+00:00"
   },
   {
    "path": "results/inputs/read_ids/bs_rep_1.polyA_read_ids.txt",
    "bytes": 16416160,
    "sha256": "cb7ab61eb43856dcfdea15ef7dcef0c146745b656b1b7c927f628f64e8c53bd7",
-   "modified": "2026-10-26T20:40:58.504251+00:00"
+   "modified": "2026-10-26T21:53:28.492426+00:00"
   },
   {
    "path": "results/inputs/read_ids/bs_rep_2.polyA_read_ids.txt",
    "bytes": 17256134,
    "sha256": "9c2adf39781ece7a2c0a68bc4a36223689b6f5f8ef38f2fb8e31db9f2872664f",
-   "modified": "2026-10-26T20:40:58.556098+00:00"
+   "modified": "2026-10-26T21:53:28.713674+00:00"
   },
   {
    "path": "results/inputs/read_ids/bs_rep_3.polyA_read_ids.txt",
    "bytes": 13183877,
    "sha256": "8e7aab9cb24147c4f27e5d0842863b5fcc3b2a9d1fbbac4993b1b1e2a732f82c",
-   "modified": "2026-10-26T20:40:58.601418+00:00"
+   "modified": "2026-10-26T21:53:28.884599+00:00"
   },
   {
    "path": "results/inputs/read_ids/pc_rep_1.polyA_read_ids.txt",
    "bytes": 7991075,
    "sha256": "a912285288dab332959564c61feffb316019bdd28217348adaf31d1f57613a7b",
-   "modified": "2026-10-26T20:40:58.629621+00:00"
+   "modified": "2026-10-26T21:53:28.998146+00:00"
   },
   {
    "path": "results/inputs/read_ids/pc_rep_2.polyA_read_ids.txt",
    "bytes": 8747022,
    "sha256": "36da2cddea3723ec4857365bf7632782cf799328fd33a502ce9f5fe540cbf33d",
-   "modified": "2026-10-26T20:40:58.659437+00:00"
+   "modified": "2026-10-26T21:53:29.122240+00:00"
   },
   {
    "path": "results/inputs/read_ids/pc_rep_3.polyA_read_ids.txt",
    "bytes": 10237567,
    "sha256": "996f9859ece53d36a148c7b480af7b59b088ba76c6aafd6345947c1e2f1e4eba",
-   "modified": "2026-10-26T20:40:58.692684+00:00"
+   "modified": "2026-10-26T21:53:29.260739+00:00"
   }
  ],
- "finished": "2026-10-26T20:48:24.601425+00:00",
+ "finished": "2026-10-26T22:05:06.917560+00:00",
  "outputs": [
   {
    "path": "results/family/family_intergenic.tsv",
    "bytes": 1126625,
    "sha256": "6a01b7b26cb03cb2a10b12de5a6f52593d25c583492d56670b4d4560c75911dc",
-   "modified": "2026-10-26T20:41:08.292757+00:00"
+   "modified": "2026-10-26T21:53:41.066182+00:00"
   },
   {
    "path": "results/family/family_nanopore.tsv",
    "bytes": 1537137,
    "sha256": "008e9303bf9ddbbd0f9e840284e5b8d8ecd099b9252d49d248cb8df3d72dd2cb",
-   "modified": "2026-10-26T20:41:08.134702+00:00"
+   "modified": "2026-10-26T21:53:40.788952+00:00"
   },
   {
    "path": "results/family/transcript_starts.tsv",
    "bytes": 211284,
    "sha256": "093a5f5c98ce153f1df61e7aae261c14f801241a1fe40b7a03aa4cef4f3c5a31",
-   "modified": "2026-10-26T20:41:06.068774+00:00"
+   "modified": "2026-10-26T21:53:37.928660+00:00"
   },
   {
    "path": "results/family/cds_v2.bed",
    "bytes": 430126,
    "sha256": "df8c21276cb440e0b6f7e2cbc124a8831ab0e7fc6a3dd528470b29512c2c68cc",
-   "modified": "2026-10-26T20:41:06.064483+00:00"
+   "modified": "2026-10-26T21:53:37.920228+00:00"
   },
   {
    "path": "results/family/read_placements.tsv.gz",
    "bytes": 51176915,
-   "sha256": "7c4c9c18b2e9026b900c50b0371a16513591167b1cfc3afc69fa89345bd80116",
-   "modified": "2026-10-26T20:41:28.716827+00:00"
+   "sha256": "2702e0525664c0db6ac85843c27b31f286a8f4bf1a93869a487899e8f4c29e7f",
+   "modified": "2026-10-26T21:54:07.309881+00:00"
   },
   {
    "path": "results/clusters_intergenic_m20p1/sites.tsv",
    "bytes": 225213,
    "sha256": "90388f72b023e21e5367445a92a3a4ca739581749c56ccea538eb50524d946c3",
-   "modified": "2026-10-26T20:44:51.602194+00:00"
+   "modified": "2026-10-26T21:59:27.001871+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/sites.tsv",
    "bytes": 221232,
    "sha256": "28ff31dd532f9c3191b92ba7e54326a3ef448494e9eb7fc74197e65bd01c840a",
-   "modified": "2026-10-26T20:44:48.842677+00:00"
+   "modified": "2026-10-26T21:59:22.537084+00:00"
   },
   {
    "path": "results/clusters_intergenic_m50p5/sites.tsv",
    "bytes": 220388,
    "sha256": "c0e62a0aa30b2f511b87b945552c7677b9f4949e5662dfb0c29dbeb542575326",
-   "modified": "2026-10-26T20:44:50.187945+00:00"
+   "modified": "2026-10-26T21:59:24.764227+00:00"
   },
   {
    "path": "results/clusters_nanopore_m20p1/sites.tsv",
    "bytes": 171412,
    "sha256": "43fef9dcbcabfa5ef203951a93ee6d41bdea65eb7cb24dfa349626de7b11d73a",
-   "modified": "2026-10-26T20:41:32.811827+00:00"
+   "modified": "2026-10-26T21:54:13.554578+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/sites.tsv",
    "bytes": 168026,
    "sha256": "be9a9bac0b63466dffb108cc3e2aeeb6e8b82ef9b4923187dc0122c1871fa13a",
-   "modified": "2026-10-26T20:41:30.394880+00:00"
+   "modified": "2026-10-26T21:54:09.744636+00:00"
   },
   {
    "path": "results/clusters_nanopore_m50p5/sites.tsv",
    "bytes": 170737,
    "sha256": "3f09346bbe76d55e05b5ee09c71ae8419c5b9f307b1661d0425598fd1e60a1b5",
-   "modified": "2026-10-26T20:41:31.585517+00:00"
+   "modified": "2026-10-26T21:54:11.568661+00:00"
   },
   {
    "path": "results/clusters_intergenic_m20p1/site_counts.tsv",
    "bytes": 216048,
    "sha256": "639679714a4577cf17fae38c005650c01329172537d2469c72acac221138fe86",
-   "modified": "2026-10-26T20:44:51.596345+00:00"
+   "modified": "2026-10-26T21:59:26.990038+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/site_counts.tsv",
    "bytes": 212753,
    "sha256": "2ee1f221c3c745a898713e68d16430fb6db91eaf710d0fa666b4bc6c8ad62e68",
-   "modified": "2026-10-26T20:44:48.836790+00:00"
+   "modified": "2026-10-26T21:59:22.525139+00:00"
   },
   {
    "path": "results/clusters_intergenic_m50p5/site_counts.tsv",
    "bytes": 213232,
    "sha256": "f274efca8271e22bbb6e317acc9c8d54dffd3d919820142e2b747ead31feadb8",
-   "modified": "2026-10-26T20:44:50.182010+00:00"
+   "modified": "2026-10-26T21:59:24.752996+00:00"
   },
   {
    "path": "results/clusters_nanopore_m20p1/site_counts.tsv",
    "bytes": 166588,
    "sha256": "bfd3b5c15014ac1c9fe5ae885a713d1b3108435fbd9968fc3e6bf079b197ef6a",
-   "modified": "2026-10-26T20:41:32.807047+00:00"
+   "modified": "2026-10-26T21:54:13.545345+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/site_counts.tsv",
    "bytes": 163674,
    "sha256": "be211c4a75cc1f1c41dc61094a001f4434a71b8ad025e725172a94d904a72587",
-   "modified": "2026-10-26T20:41:30.390685+00:00"
+   "modified": "2026-10-26T21:54:09.735495+00:00"
   },
   {
    "path": "results/clusters_nanopore_m50p5/site_counts.tsv",
    "bytes": 166942,
    "sha256": "ab35335afc613d0e7c755e3cbf74ff3e4a6c1eb03eaf3df66898f943bd3c0a0d",
-   "modified": "2026-10-26T20:41:31.580922+00:00"
+   "modified": "2026-10-26T21:54:11.559005+00:00"
   },
   {
    "path": "results/clusters_intergenic_m20p1/windows.tsv",
    "bytes": 258659,
    "sha256": "b23cb77b3a090b77fb4aa5f215b618c8de6d1603fcc582de118660346fb594a4",
-   "modified": "2026-10-26T20:44:51.609249+00:00"
+   "modified": "2026-10-26T21:59:27.016994+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/windows.tsv",
    "bytes": 259473,
    "sha256": "30e4ca1f3f210d5ce0b24b222891bec3413e4caecc11e96fad0fb7eb46f07eca",
-   "modified": "2026-10-26T20:44:48.849637+00:00"
+   "modified": "2026-10-26T21:59:22.552686+00:00"
   },
   {
    "path": "results/clusters_intergenic_m50p5/windows.tsv",
    "bytes": 258223,
    "sha256": "0eba43e195cb81eee98a4048f1580f5c45958f5b66117be30918c82b60e1fb25",
-   "modified": "2026-10-26T20:44:50.195287+00:00"
+   "modified": "2026-10-26T21:59:24.779296+00:00"
   },
   {
    "path": "results/clusters_nanopore_m20p1/windows.tsv",
    "bytes": 242144,
    "sha256": "c12ace92f5f19d0ac56087b3d014905defca436685f52ceaa1313456664161cf",
-   "modified": "2026-10-26T20:41:32.818174+00:00"
+   "modified": "2026-10-26T21:54:13.566941+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/windows.tsv",
    "bytes": 243004,
    "sha256": "c38c5eca489febfbf426c2ba6eec7aeb6270777bdf206617aee8be415176ead3",
-   "modified": "2026-10-26T20:41:30.401145+00:00"
+   "modified": "2026-10-26T21:54:09.757000+00:00"
   },
   {
    "path": "results/clusters_nanopore_m50p5/windows.tsv",
    "bytes": 241370,
    "sha256": "6c8b6fcdb52a39db7f52eac439804528e55ed74834bc0a1166cfe0454d07a7b6",
-   "modified": "2026-10-26T20:41:31.591762+00:00"
+   "modified": "2026-10-26T21:54:11.582620+00:00"
   },
   {
    "path": "results/clusters_intergenic_m20p1/dexseq_gene.tsv",
-   "bytes": 99884,
-   "sha256": "f841be07026a73558f7a5a9e4952f3ddf68774678edffc90b83c59ca4be06369",
-   "modified": "2026-10-26T20:45:30.241118+00:00"
+   "bytes": 99908,
+   "sha256": "a053d338f76e66eeb0707dd16e32e149e5953d04df67fe655f326261c8f932c3",
+   "modified": "2026-10-26T22:00:23.666939+00:00"
   },
   {
    "path": "results/clusters_intergenic_m20p1/dexseq_site.tsv",
-   "bytes": 712000,
-   "sha256": "e478d35ff53302dc732d8c3fa22408237419e7d937758b74b4c46e2fb74e198a",
-   "modified": "2026-10-26T20:45:30.206891+00:00"
+   "bytes": 712076,
+   "sha256": "1bf6617a65b9e1267bd6f525c84ca92b6efab8c433c111252ecaf75990b551b2",
+   "modified": "2026-10-26T22:00:23.659952+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/dexseq_gene.tsv",
-   "bytes": 99252,
-   "sha256": "596d109336749199e5737f0ab12d658f6cc44ae1b0d0c78cc9dcf69de0ee088c",
-   "modified": "2026-10-26T20:45:04.411051+00:00"
+   "bytes": 99282,
+   "sha256": "5c65c6e7ff097bee0d993e2d5a815f1bcd29e255253bbe108194fcb4d4d6327b",
+   "modified": "2026-10-26T21:59:45.674658+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/dexseq_site.tsv",
-   "bytes": 701785,
-   "sha256": "0ad15430ef528c23d76b78999c146dc94ffbd885a93652b368ef0e4eb6f71cf5",
-   "modified": "2026-10-26T20:45:04.377453+00:00"
+   "bytes": 701954,
+   "sha256": "165e933c11793ec5d60ea9f570e10def397b641424ad6581d64a2c7d2fe88cc4",
+   "modified": "2026-10-26T21:59:45.667344+00:00"
   },
   {
    "path": "results/clusters_intergenic_m50p5/dexseq_gene.tsv",
-   "bytes": 102983,
-   "sha256": "57c129999b9b0092b3663c4671ba0f1200693a1c05ccab0976be42bd30df9bdd",
-   "modified": "2026-10-26T20:45:17.100392+00:00"
+   "bytes": 103037,
+   "sha256": "7972b79c7feb4d2206cfce61f8d02948dda686498c66f381b77def91600b5a56",
+   "modified": "2026-10-26T22:00:04.266343+00:00"
   },
   {
    "path": "results/clusters_intergenic_m50p5/dexseq_site.tsv",
-   "bytes": 704822,
-   "sha256": "aa74c4adbc730144f89bac76a3bd9475510fdb8872203ddf51f933c882aac36b",
-   "modified": "2026-10-26T20:45:17.064948+00:00"
+   "bytes": 704874,
+   "sha256": "630ed2f2637418c05ec3073b828eaaba7b760013fb5d1f0639048da8ad0e5ede",
+   "modified": "2026-10-26T22:00:04.258167+00:00"
   },
   {
    "path": "results/clusters_nanopore_m20p1/dexseq_gene.tsv",
-   "bytes": 78166,
-   "sha256": "50190981a7db93fe4daf6285eac564c76984da0da750a44d3a3fff74a35a1131",
-   "modified": "2026-10-26T20:42:08.320032+00:00"
+   "bytes": 78198,
+   "sha256": "95df712eb9b0b40d4af317f628ae534427e03d0bde053eab6d9993470a71dc23",
+   "modified": "2026-10-26T21:55:05.574381+00:00"
   },
   {
    "path": "results/clusters_nanopore_m20p1/dexseq_site.tsv",
-   "bytes": 545650,
-   "sha256": "a96c6bd51dfb7a2868c2072db071942402cfbe73bab4c51b680c71476d631433",
-   "modified": "2026-10-26T20:42:08.285165+00:00"
+   "bytes": 545733,
+   "sha256": "440a8cc6bf76c116dcefbfbf211ff4967431950840fc07295c70ea4f8200c7f2",
+   "modified": "2026-10-26T21:55:05.568112+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/dexseq_gene.tsv",
-   "bytes": 77314,
-   "sha256": "e12b275d1e78436cb925b10b5c3a1ad794e2490fd7f99ffbc17a4ff34dbc8b6f",
-   "modified": "2026-10-26T20:41:44.585196+00:00"
+   "bytes": 77340,
+   "sha256": "9de260e474a24778ea451b4d0b806ab5eda007b3103b73d79e99b9c7ac25ef68",
+   "modified": "2026-10-26T21:54:30.753160+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/dexseq_site.tsv",
-   "bytes": 536549,
-   "sha256": "79d9c7a5318ace05136a66baef0f840c866cfe4dd80d9509dc67481a509b715a",
-   "modified": "2026-10-26T20:41:44.552486+00:00"
+   "bytes": 536654,
+   "sha256": "89ec2994a51e22c1653a8f51f3eee18be59ff41e654e926577a2c3a17c09b3ea",
+   "modified": "2026-10-26T21:54:30.746270+00:00"
   },
   {
    "path": "results/clusters_nanopore_m50p5/dexseq_gene.tsv",
-   "bytes": 82085,
-   "sha256": "03f70100b553a8342b82049d7a168cf3388101119bf4a810bd7c348a0a01a6ac",
-   "modified": "2026-10-26T20:41:56.462358+00:00"
+   "bytes": 82153,
+   "sha256": "a120d7870387a8682f943b4e3850c5a556b23e435e59844cbd9d642baf21bc70",
+   "modified": "2026-10-26T21:54:48.171748+00:00"
   },
   {
    "path": "results/clusters_nanopore_m50p5/dexseq_site.tsv",
-   "bytes": 549778,
-   "sha256": "4efc9131bbfc9ac6f9ab84a46af9abdd855b32757f862df3ef1969ea14f2546a",
-   "modified": "2026-10-26T20:41:56.429258+00:00"
+   "bytes": 549874,
+   "sha256": "0b82d5ceb6c2bd397b6235bb3ff0968d785b7a023d6c245721dcb8838f7d676a",
+   "modified": "2026-10-26T21:54:48.165555+00:00"
   },
   {
    "path": "results/clusters_intergenic_m20p1/stager.tsv",
-   "bytes": 317777,
-   "sha256": "2f16c301903e4ac0c96552d1dbef3169cdf566383450526c4a9f333fc80a7d07",
-   "modified": "2026-10-26T20:45:30.248059+00:00"
+   "bytes": 317796,
+   "sha256": "c7ce38d3f8aa738906291b060dc452f8f010dc6ee5274cba75bef8661f03b602",
+   "modified": "2026-10-26T22:00:23.681818+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/stager.tsv",
-   "bytes": 314242,
-   "sha256": "acd47a2ee88c9644bb244de94b5311bcee4597cd5be35dbf80e96f712b6a60ec",
-   "modified": "2026-10-26T20:45:04.417691+00:00"
+   "bytes": 314306,
+   "sha256": "abcac2c71de77fa881cfd2140886ed1da07ef32ff8402fc18973e1f7467e01d0",
+   "modified": "2026-10-26T21:59:45.689801+00:00"
   },
   {
    "path": "results/clusters_intergenic_m50p5/stager.tsv",
-   "bytes": 316826,
-   "sha256": "223b9d6ac5e287896acc85fc5f028bddb4e87cc8aeb1226812dd3529023e7d4e",
-   "modified": "2026-10-26T20:45:17.107333+00:00"
+   "bytes": 316934,
+   "sha256": "af86b1606f47b8b88c6c94ce4cb9609ee1f3887ce1dcf4df54d752349b32c24d",
+   "modified": "2026-10-26T22:00:04.282562+00:00"
   },
   {
    "path": "results/clusters_nanopore_m20p1/stager.tsv",
-   "bytes": 240277,
-   "sha256": "8960d4ecfa2109f6228912bced0ecb3836b74dd9414247e1fe4bd5067aaef6c1",
-   "modified": "2026-10-26T20:42:08.325834+00:00"
+   "bytes": 240338,
+   "sha256": "17913095e2706fbd062f647972818d11abe3e64dae63825401d1ba22965f9c14",
+   "modified": "2026-10-26T21:55:05.586850+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/stager.tsv",
-   "bytes": 236859,
-   "sha256": "ae3553f079ecdddbd60892d8eeb76a1e01aa62cdada772d49855167c1460eb80",
-   "modified": "2026-10-26T20:41:44.590449+00:00"
+   "bytes": 236908,
+   "sha256": "850414e65f4e66c97447cb07403c49b500f1d65f838e76f0701d205970677b66",
+   "modified": "2026-10-26T21:54:30.765609+00:00"
   },
   {
    "path": "results/clusters_nanopore_m50p5/stager.tsv",
-   "bytes": 245340,
-   "sha256": "aebddce8bb10734188c43761b1186acbea371633e120552f71e73e0e0fbde987",
-   "modified": "2026-10-26T20:41:56.468027+00:00"
+   "bytes": 245465,
+   "sha256": "00c48150751e4ec9e60a2611ddc4a4f065ed5a38acfb7751502f432837b61983",
+   "modified": "2026-10-26T21:54:48.183538+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/drimseq_gene.tsv",
-   "bytes": 147177,
-   "sha256": "498eab6f9d559ba3e958759e47ac64efd183d917fc2d15541e1210fd41d7aafb",
-   "modified": "2026-10-26T20:46:16.556342+00:00"
+   "bytes": 147273,
+   "sha256": "d703208a82ce363409b40cadda11bbd30f26365a72597e5c16694ec1c89478cd",
+   "modified": "2026-10-26T22:02:00.850706+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/drimseq_site.tsv",
-   "bytes": 546545,
-   "sha256": "bed7de899e67e6e5ab3becca7e8da52c67dc30c9cdebe5dcdedb1b86cb6d6792",
-   "modified": "2026-10-26T20:46:16.598187+00:00"
+   "bytes": 547694,
+   "sha256": "9404e885377eeaa86d7200abcc73cbd3406b74d59a0881d2d2f29ab6b5c89a5f",
+   "modified": "2026-10-26T22:02:00.890550+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/drimseq_stager.tsv",
-   "bytes": 289272,
-   "sha256": "a282692689f6159ae8649fe3180558894698da3f2060c784ca0d04e3e540a59b",
-   "modified": "2026-10-26T20:46:16.604651+00:00"
+   "bytes": 289431,
+   "sha256": "99cf0a42dde0adaf459ba3eaa42ec12e2ff5b6583f83e21f29d3d23949ea943b",
+   "modified": "2026-10-26T22:02:00.905545+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/drimseq_gene.tsv",
-   "bytes": 113148,
-   "sha256": "c6ce2df27e490bc310e9f9fafb1a1aea76dbcf4446532aebc4e084bc89ca24db",
-   "modified": "2026-10-26T20:42:45.959633+00:00"
+   "bytes": 113140,
+   "sha256": "98b1bc604ceedd6c7e314a10354fc7715ddbc8ec95eef866482f6a426a070f3a",
+   "modified": "2026-10-26T21:56:23.678107+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/drimseq_site.tsv",
-   "bytes": 403539,
-   "sha256": "11cc3140badaf0b5cea2ec5ceab5b71232c8c50615f8afb16a52735cb4a8a562",
-   "modified": "2026-10-26T20:42:45.998499+00:00"
+   "bytes": 404245,
+   "sha256": "9620e75b36e3836b0a4a60d1682de379be5fb564173e868d0bae5c24463fc2ce",
+   "modified": "2026-10-26T21:56:23.711103+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/drimseq_stager.tsv",
-   "bytes": 211659,
-   "sha256": "596457e6fc2d4f88eba322cca94117705cc1ff6e641312c43e00fb7f892568a0",
-   "modified": "2026-10-26T20:42:46.003962+00:00"
+   "bytes": 211669,
+   "sha256": "da783b10ff92d588176db544c1d8b2b6795e1f4014a548ad03fb4475017d0dd9",
+   "modified": "2026-10-26T21:56:23.722805+00:00"
   },
   {
    "path": "results/clusters_intergenic_m30p2/permutation_calls.tsv",
    "bytes": 822,
    "sha256": "3467913b90138d0fbe696b9ac79f18a78045d85eb01b820d5038ee46469a12a5",
-   "modified": "2026-10-26T20:48:23.720543+00:00"
+   "modified": "2026-10-26T22:05:05.444457+00:00"
   },
   {
    "path": "results/clusters_nanopore_m30p2/permutation_calls.tsv",
    "bytes": 822,
    "sha256": "c0dc0482bb6ec0550fad30f9770f671ba708fa97c563b3c610ae83b2c037004c",
-   "modified": "2026-10-26T20:44:46.750559+00:00"
+   "modified": "2026-10-26T21:59:19.316083+00:00"
   },
   {
    "path": "results/docs/support_by_setting_intergenic.tsv",
    "bytes": 278897,
    "sha256": "1290d0302058508e2af10d09a3d14be3d01c8d9c7e15f6db8d5b07789edf8586",
-   "modified": "2026-10-26T20:48:24.526020+00:00"
+   "modified": "2026-10-26T22:05:06.717138+00:00"
   },
   {
    "path": "results/docs/support_by_setting_nanopore.tsv",
    "bytes": 250734,
    "sha256": "cc34676bbe18d6dcaf6f7c868855c1c5c51ac8532543dfc4775ef9ec4c155ac4",
-   "modified": "2026-10-26T20:44:47.464190+00:00"
+   "modified": "2026-10-26T21:59:20.373519+00:00"
   }
  ]
 }
