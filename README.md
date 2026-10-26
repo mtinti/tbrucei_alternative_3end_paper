@@ -30,7 +30,7 @@ flowchart LR
     A["Curated annotation<br/>+ genome"] --> W["Window per gene<br/>family: 10 ends in every replicate"]
     FL --> W
     PA --> E["3' end positions<br/>per replicate"]
-    E --> C["End clusters<br/>pooled ends, stage not read"]
+    E --> C["End clusters<br/>pooled ends of all replicates"]
     W --> C
   end
   C --> T["DEXSeq + stageR<br/>share of ends per cluster, BSF vs PCF"]
@@ -38,7 +38,9 @@ flowchart LR
   FL --> I
   PA --> G["Gene-assigned counts<br/>reads covering the CDS, uniquely placed"]
   C --> G
-  G --> X["Strong-evidence rule<br/>52 of 742 genes"]
+  G --> S["Strong-evidence rule"]
+  I --> S
+  S --> X["Result<br/>52 of 742 genes, each site labelled"]
 ```
 
 1. **Where the reads end.** Each read with a measured poly(A) tail gives one
