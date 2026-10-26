@@ -22,23 +22,23 @@ and the figures of the 52 genes are in `docs/figures/index_strong.html`.
 ```mermaid
 flowchart LR
   subgraph Reads
-    R[Direct RNA nanopore reads<br/>3 BSF + 3 PCF, ENA] --> B[Guppy, minimap2<br/>nanopolish poly(A)]
-    B --> PA[Poly(A) reads<br/>BAM per stage, read ids per replicate]
-    B --> FL[Full-length reads<br/>spliced leader + poly(A)]
+    R["Direct RNA nanopore reads<br/>3 BSF + 3 PCF, ENA"] --> B["Guppy, minimap2<br/>nanopolish poly(A)"]
+    B --> PA["Poly(A) reads<br/>BAM per stage, read ids per replicate"]
+    B --> FL["Full-length reads<br/>spliced leader + poly(A)"]
   end
   subgraph Counting
-    A[Curated annotation<br/>+ genome] --> W[Window per gene<br/>family: 10 ends in every replicate]
+    A["Curated annotation<br/>+ genome"] --> W["Window per gene<br/>family: 10 ends in every replicate"]
     FL --> W
-    PA --> E[3' end positions<br/>per replicate]
-    E --> C[End clusters<br/>pooled ends, stage not read]
+    PA --> E["3' end positions<br/>per replicate"]
+    E --> C["End clusters<br/>pooled ends, stage not read"]
     W --> C
   end
-  C --> T[DEXSeq + stageR<br/>share of ends per cluster, BSF vs PCF]
-  T --> I[Interpretation of each cluster<br/>gene-connected or independent transcript]
+  C --> T["DEXSeq + stageR<br/>share of ends per cluster, BSF vs PCF"]
+  T --> I["Interpretation of each cluster<br/>gene-connected or independent transcript"]
   FL --> I
-  PA --> G[Gene-assigned counts<br/>reads covering the CDS, uniquely placed]
+  PA --> G["Gene-assigned counts<br/>reads covering the CDS, uniquely placed"]
   C --> G
-  G --> X[Strong-evidence rule<br/>52 of 742 genes]
+  G --> X["Strong-evidence rule<br/>52 of 742 genes"]
 ```
 
 1. **Where the reads end.** Each read with a measured poly(A) tail gives one
