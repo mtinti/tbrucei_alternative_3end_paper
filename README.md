@@ -20,7 +20,8 @@ and the figures of the 52 genes are in `docs/figures/index_strong.html`.
 ## How the analysis works
 
 ```mermaid
-flowchart TB
+flowchart LR
+  classDef pad fill:none,stroke:none,color:none
   subgraph Reads
     R["Direct RNA nanopore reads<br/>3 BSF + 3 PCF, ENA"] --> B["Guppy, minimap2<br/>nanopolish poly(A)"]
     B --> PA["Poly(A) reads<br/>BAM per stage, read ids per replicate"]
@@ -41,6 +42,8 @@ flowchart TB
   G --> S["Strong-evidence rule"]
   I --> S
   S --> X["Result<br/>52 of 742 genes, each site labelled"]
+  X ~~~ P1[" "]:::pad
+  P1 ~~~ P2[" "]:::pad
 ```
 
 1. **Where the reads end.** Each read with a measured poly(A) tail gives one
