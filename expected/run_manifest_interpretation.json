@@ -1,7 +1,7 @@
 {
- "started": "2026-10-26T18:59:42.726737+00:00",
+ "started": "2026-10-26T20:48:24.677203+00:00",
  "status": "completed",
- "command": "start --out results/v2/docs/run_manifest_interpretation.json --inputs data/genome/tb927_56.fa annotation/ensembl116_noncoding_genes.bed data/bam/bs.filter_polyA_tb927.sorted.bam data/bam/pc.filter_polyA_tb927.sorted.bam data/bam/bs.filter_polyA_SL_tb927.sorted.bam data/bam/pc.filter_polyA_SL_tb927.sorted.bam data/read_ids/bs_rep_1.polyA_read_ids.txt data/read_ids/bs_rep_2.polyA_read_ids.txt data/read_ids/bs_rep_3.polyA_read_ids.txt data/read_ids/pc_rep_1.polyA_read_ids.txt data/read_ids/pc_rep_2.polyA_read_ids.txt data/read_ids/pc_rep_3.polyA_read_ids.txt results/v2/family/cds_v2.bed results/v2/family/transcript_starts.tsv results/v2/clusters_intergenic_m30p2/dexseq_site.tsv results/v2/clusters_nanopore_m30p2/dexseq_site.tsv results/v2/clusters_intergenic_m30p2/dexseq_gene.tsv results/v2/clusters_nanopore_m30p2/dexseq_gene.tsv results/v2/clusters_intergenic_m30p2/sites.tsv results/v2/clusters_nanopore_m30p2/sites.tsv --options events=min_aligned_length=200 tolerance=60 link_distance=100 min_reads=20 min_informative=10 min_cluster=10 min_fraction=0.15 sharp_start=0 (sensitivity 5) catalogue=start_tolerance=100 end_tolerance=60 expression_filter=5 reads in 2 replicates; abundance: edgeR QL, TMM over genes and records gene_assigned=aligned CDS bases>=50, mapq>=20, no secondary alignment with AS>=primary AS, no other same-strand CDS with >=50 aligned bases; min_ends=10 support=5x2; strong=change>=30 points, replicates separated, same direction in both other settings, >=20 assigned ends; mapq sensitivity 1 10 30 60 with the secondary rule and 20 without it ranking=tiers by replicate separation, size of change (30, 20 points), support in all analyses, label; within tier by size of change",
+ "command": "start --out results/docs/run_manifest_interpretation.json --inputs results/inputs/tb927_56.fa data/annotation/ensembl116_noncoding_genes.bed data/bam/bs.filter_polyA_tb927.sorted.bam data/bam/pc.filter_polyA_tb927.sorted.bam data/bam/bs.filter_polyA_SL_tb927.sorted.bam data/bam/pc.filter_polyA_SL_tb927.sorted.bam results/inputs/read_ids/bs_rep_1.polyA_read_ids.txt results/inputs/read_ids/bs_rep_2.polyA_read_ids.txt results/inputs/read_ids/bs_rep_3.polyA_read_ids.txt results/inputs/read_ids/pc_rep_1.polyA_read_ids.txt results/inputs/read_ids/pc_rep_2.polyA_read_ids.txt results/inputs/read_ids/pc_rep_3.polyA_read_ids.txt results/family/cds_v2.bed results/family/transcript_starts.tsv results/clusters_intergenic_m30p2/dexseq_site.tsv results/clusters_nanopore_m30p2/dexseq_site.tsv results/clusters_intergenic_m30p2/dexseq_gene.tsv results/clusters_nanopore_m30p2/dexseq_gene.tsv results/clusters_intergenic_m30p2/sites.tsv results/clusters_nanopore_m30p2/sites.tsv --options events=min_aligned_length=200 tolerance=60 link_distance=100 min_reads=20 min_informative=10 min_cluster=10 min_fraction=0.15 sharp_start=0 (sensitivity 5) catalogue=start_tolerance=100 end_tolerance=60 expression_filter=5 reads in 2 replicates; abundance: edgeR QL, TMM over genes and records gene_assigned=aligned CDS bases>=50, mapq>=20, no secondary alignment with AS>=primary AS, no other same-strand CDS with >=50 aligned bases; min_ends=10 support=5x2; strong=change>=30 points, replicates separated, same direction in both other settings, >=20 assigned ends; mapq sensitivity 1 10 30 60 with the secondary rule and 20 without it ranking=tiers by replicate separation, size of change (30, 20 points), support in all analyses, label; within tier by size of change",
  "options": {
   "events": "min_aligned_length=200 tolerance=60 link_distance=100 min_reads=20 min_informative=10 min_cluster=10 min_fraction=0.15 sharp_start=0 (sensitivity 5)",
   "catalogue": "start_tolerance=100 end_tolerance=60 expression_filter=5 reads in 2 replicates; abundance: edgeR QL, TMM over genes and records",
@@ -23,21 +23,21 @@
   "stageR": "1.32.0 ",
   "DEXSeq": "1.56.0 ",
   "edgeR": "4.8.2",
-  "git_commit": "0473510edfa66e39a58c98ada421e386e564b314",
+  "git_commit": "7eb319d884fd5d22e986097e9e5efbe6ad8fa254",
   "git_dirty": false
  },
  "inputs": [
   {
-   "path": "data/genome/tb927_56.fa",
+   "path": "results/inputs/tb927_56.fa",
    "bytes": 37186964,
    "sha256": "cdab49b9e316916890630f96d9ed1fb4263638a5e7f5f080f077712d494b3fa8",
-   "modified": "2022-01-23T19:36:37+00:00"
+   "modified": "2026-10-26T20:40:58.195767+00:00"
   },
   {
-   "path": "annotation/ensembl116_noncoding_genes.bed",
+   "path": "data/annotation/ensembl116_noncoding_genes.bed",
    "bytes": 144343,
    "sha256": "d309c04c735f94514ffe9c8ba9222b923c3591caa795866fd55f951c038d959c",
-   "modified": "2026-10-25T17:54:06.656170+00:00"
+   "modified": "2026-10-26T20:35:32.157610+00:00"
   },
   {
    "path": "data/bam/bs.filter_polyA_tb927.sorted.bam",
@@ -64,625 +64,1243 @@
    "modified": "2024-08-19T16:33:35+00:00"
   },
   {
-   "path": "data/read_ids/bs_rep_1.polyA_read_ids.txt",
+   "path": "results/inputs/read_ids/bs_rep_1.polyA_read_ids.txt",
    "bytes": 16416160,
    "sha256": "cb7ab61eb43856dcfdea15ef7dcef0c146745b656b1b7c927f628f64e8c53bd7",
-   "modified": "2026-10-25T19:47:23+00:00"
+   "modified": "2026-10-26T20:40:58.504251+00:00"
   },
   {
-   "path": "data/read_ids/bs_rep_2.polyA_read_ids.txt",
+   "path": "results/inputs/read_ids/bs_rep_2.polyA_read_ids.txt",
    "bytes": 17256134,
    "sha256": "9c2adf39781ece7a2c0a68bc4a36223689b6f5f8ef38f2fb8e31db9f2872664f",
-   "modified": "2026-10-25T19:47:23+00:00"
+   "modified": "2026-10-26T20:40:58.556098+00:00"
   },
   {
-   "path": "data/read_ids/bs_rep_3.polyA_read_ids.txt",
+   "path": "results/inputs/read_ids/bs_rep_3.polyA_read_ids.txt",
    "bytes": 13183877,
    "sha256": "8e7aab9cb24147c4f27e5d0842863b5fcc3b2a9d1fbbac4993b1b1e2a732f82c",
-   "modified": "2026-10-25T19:47:22+00:00"
+   "modified": "2026-10-26T20:40:58.601418+00:00"
   },
   {
-   "path": "data/read_ids/pc_rep_1.polyA_read_ids.txt",
+   "path": "results/inputs/read_ids/pc_rep_1.polyA_read_ids.txt",
    "bytes": 7991075,
    "sha256": "a912285288dab332959564c61feffb316019bdd28217348adaf31d1f57613a7b",
-   "modified": "2026-10-25T19:47:20+00:00"
+   "modified": "2026-10-26T20:40:58.629621+00:00"
   },
   {
-   "path": "data/read_ids/pc_rep_2.polyA_read_ids.txt",
+   "path": "results/inputs/read_ids/pc_rep_2.polyA_read_ids.txt",
    "bytes": 8747022,
    "sha256": "36da2cddea3723ec4857365bf7632782cf799328fd33a502ce9f5fe540cbf33d",
-   "modified": "2026-10-25T19:47:21+00:00"
+   "modified": "2026-10-26T20:40:58.659437+00:00"
   },
   {
-   "path": "data/read_ids/pc_rep_3.polyA_read_ids.txt",
+   "path": "results/inputs/read_ids/pc_rep_3.polyA_read_ids.txt",
    "bytes": 10237567,
    "sha256": "996f9859ece53d36a148c7b480af7b59b088ba76c6aafd6345947c1e2f1e4eba",
-   "modified": "2026-10-25T19:47:21+00:00"
+   "modified": "2026-10-26T20:40:58.692684+00:00"
   },
   {
-   "path": "results/v2/family/cds_v2.bed",
+   "path": "results/family/cds_v2.bed",
    "bytes": 430126,
    "sha256": "df8c21276cb440e0b6f7e2cbc124a8831ab0e7fc6a3dd528470b29512c2c68cc",
-   "modified": "2026-10-26T18:52:28.425287+00:00"
+   "modified": "2026-10-26T20:41:06.064483+00:00"
   },
   {
-   "path": "results/v2/family/transcript_starts.tsv",
+   "path": "results/family/transcript_starts.tsv",
    "bytes": 211284,
    "sha256": "093a5f5c98ce153f1df61e7aae261c14f801241a1fe40b7a03aa4cef4f3c5a31",
-   "modified": "2026-10-26T18:52:28.429316+00:00"
+   "modified": "2026-10-26T20:41:06.068774+00:00"
   },
   {
-   "path": "results/v2/clusters_intergenic_m30p2/dexseq_site.tsv",
+   "path": "results/clusters_intergenic_m30p2/dexseq_site.tsv",
    "bytes": 701785,
    "sha256": "0ad15430ef528c23d76b78999c146dc94ffbd885a93652b368ef0e4eb6f71cf5",
-   "modified": "2026-10-26T18:56:27.518562+00:00"
+   "modified": "2026-10-26T20:45:04.377453+00:00"
   },
   {
-   "path": "results/v2/clusters_nanopore_m30p2/dexseq_site.tsv",
+   "path": "results/clusters_nanopore_m30p2/dexseq_site.tsv",
    "bytes": 536549,
    "sha256": "79d9c7a5318ace05136a66baef0f840c866cfe4dd80d9509dc67481a509b715a",
-   "modified": "2026-10-26T18:53:11.579024+00:00"
+   "modified": "2026-10-26T20:41:44.552486+00:00"
   },
   {
-   "path": "results/v2/clusters_intergenic_m30p2/dexseq_gene.tsv",
+   "path": "results/clusters_intergenic_m30p2/dexseq_gene.tsv",
    "bytes": 99252,
    "sha256": "596d109336749199e5737f0ab12d658f6cc44ae1b0d0c78cc9dcf69de0ee088c",
-   "modified": "2026-10-26T18:56:27.551749+00:00"
+   "modified": "2026-10-26T20:45:04.411051+00:00"
   },
   {
-   "path": "results/v2/clusters_nanopore_m30p2/dexseq_gene.tsv",
+   "path": "results/clusters_nanopore_m30p2/dexseq_gene.tsv",
    "bytes": 77314,
    "sha256": "e12b275d1e78436cb925b10b5c3a1ad794e2490fd7f99ffbc17a4ff34dbc8b6f",
-   "modified": "2026-10-26T18:53:11.613023+00:00"
+   "modified": "2026-10-26T20:41:44.585196+00:00"
   },
   {
-   "path": "results/v2/clusters_intergenic_m30p2/sites.tsv",
+   "path": "results/clusters_intergenic_m30p2/sites.tsv",
    "bytes": 221232,
    "sha256": "28ff31dd532f9c3191b92ba7e54326a3ef448494e9eb7fc74197e65bd01c840a",
-   "modified": "2026-10-26T18:56:09.993577+00:00"
+   "modified": "2026-10-26T20:44:48.842677+00:00"
   },
   {
-   "path": "results/v2/clusters_nanopore_m30p2/sites.tsv",
+   "path": "results/clusters_nanopore_m30p2/sites.tsv",
    "bytes": 168026,
    "sha256": "be9a9bac0b63466dffb108cc3e2aeeb6e8b82ef9b4923187dc0122c1871fa13a",
-   "modified": "2026-10-26T18:52:55.129848+00:00"
+   "modified": "2026-10-26T20:41:30.394880+00:00"
   }
  ],
- "finished": "2026-10-26T20:08:48.817211+00:00",
+ "finished": "2026-10-26T21:07:44.814425+00:00",
  "outputs": [
   {
-   "path": "results/v2/docs/events_intergenic_sharpstart_sensitivity.tsv",
+   "path": "results/docs/events_intergenic_sharpstart_sensitivity.tsv",
    "bytes": 173946,
    "sha256": "1b498aab6e08d44ef4ada8017bd8d1079438ee2ed0d5d1e3c5d866fa55502d68",
-   "modified": "2026-10-26T19:00:16.089360+00:00"
+   "modified": "2026-10-26T20:48:58.544323+00:00"
   },
   {
-   "path": "results/v2/docs/events_intergenic.tsv",
+   "path": "results/docs/events_intergenic.tsv",
    "bytes": 172466,
    "sha256": "d88693c3ad7c283038c3849f7e99f4a1715e6cf61fff11c94c2f6dd5e14eb9c9",
-   "modified": "2026-10-26T19:00:08.993104+00:00"
+   "modified": "2026-10-26T20:48:51.194483+00:00"
   },
   {
-   "path": "results/v2/docs/events_nanopore_sharpstart_sensitivity.tsv",
+   "path": "results/docs/events_nanopore_sharpstart_sensitivity.tsv",
    "bytes": 112593,
    "sha256": "4b1b16078ad4bc20071f9266985190dd3fe8a07a6b5ad5dc62ff0e66e16da190",
-   "modified": "2026-10-26T19:00:01.932872+00:00"
+   "modified": "2026-10-26T20:48:44.051581+00:00"
   },
   {
-   "path": "results/v2/docs/events_nanopore.tsv",
+   "path": "results/docs/events_nanopore.tsv",
    "bytes": 111475,
    "sha256": "88588bf2ba0731f1e1b836c0cac5b131985b78453521ceab6d81fce329889d6b",
-   "modified": "2026-10-26T18:59:56.222267+00:00"
+   "modified": "2026-10-26T20:48:38.276212+00:00"
   },
   {
-   "path": "results/v2/docs/ranked_intergenic.tsv",
+   "path": "results/docs/ranked_intergenic.tsv",
    "bytes": 62413,
    "sha256": "86ceee2c1cea2b892692087c63eaf4c8a0acb2bfec99d7eafcb69871470f177b",
-   "modified": "2026-10-26T19:18:52.631393+00:00"
+   "modified": "2026-10-26T21:07:44.115218+00:00"
   },
   {
-   "path": "results/v2/docs/ranked_nanopore.tsv",
+   "path": "results/docs/ranked_nanopore.tsv",
    "bytes": 40035,
    "sha256": "5935f0e10c3992f18ee7d7750751fbed5febed2ccacfe980f5cd5b55a2ec7ed4",
-   "modified": "2026-10-26T19:18:52.112302+00:00"
+   "modified": "2026-10-26T21:07:43.596533+00:00"
   },
   {
-   "path": "results/v2/docs/support_by_setting_gene_assigned_intergenic.tsv",
+   "path": "results/docs/support_by_setting_gene_assigned_intergenic.tsv",
    "bytes": 237052,
    "sha256": "2bb6e5e1a2844ce3acb35e8480134bd0f6d2aa6b586401e40abe4f26e52b5b0a",
-   "modified": "2026-10-26T19:05:40.856797+00:00"
+   "modified": "2026-10-26T20:54:28.394251+00:00"
   },
   {
-   "path": "results/v2/docs/support_by_setting_gene_assigned_nanopore.tsv",
+   "path": "results/docs/support_by_setting_gene_assigned_nanopore.tsv",
    "bytes": 215400,
    "sha256": "4d15468ebd421a79d587638d77ff67a5fa8e738bf78c59b0fef5760c0a9d42e8",
-   "modified": "2026-10-26T19:02:49.541612+00:00"
+   "modified": "2026-10-26T20:51:34.323682+00:00"
   },
   {
-   "path": "results/v2/docs/support_by_setting_intergenic.tsv",
+   "path": "results/docs/support_by_setting_intergenic.tsv",
    "bytes": 278897,
    "sha256": "1290d0302058508e2af10d09a3d14be3d01c8d9c7e15f6db8d5b07789edf8586",
-   "modified": "2026-10-26T18:59:42.579698+00:00"
+   "modified": "2026-10-26T20:48:24.526020+00:00"
   },
   {
-   "path": "results/v2/docs/support_by_setting_nanopore.tsv",
+   "path": "results/docs/support_by_setting_nanopore.tsv",
    "bytes": 250734,
    "sha256": "cc34676bbe18d6dcaf6f7c868855c1c5c51ac8532543dfc4775ef9ec4c155ac4",
-   "modified": "2026-10-26T18:56:07.473554+00:00"
+   "modified": "2026-10-26T20:44:47.464190+00:00"
   },
   {
-   "path": "results/v2/docs/strong_end_usage_intergenic.tsv",
+   "path": "results/docs/strong_end_usage_intergenic.tsv",
    "bytes": 318306,
    "sha256": "eef5a9dff2ab22f98093fc2e804418dcf8ee1af428015fac2f84575e7f60425f",
-   "modified": "2026-10-26T19:05:43.674052+00:00"
+   "modified": "2026-10-26T20:54:31.269338+00:00"
   },
   {
-   "path": "results/v2/docs/strong_end_usage_nanopore.tsv",
+   "path": "results/docs/strong_end_usage_nanopore.tsv",
    "bytes": 309841,
    "sha256": "edd2a447a7cfc0579bf4d2477d4d35feba08e85d290d9fb2885b86a215d20512",
-   "modified": "2026-10-26T19:02:52.328495+00:00"
+   "modified": "2026-10-26T20:51:37.044831+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m20p1/assignment.tsv",
+   "path": "results/gene_assigned_intergenic_m20p1/assignment.tsv",
    "bytes": 264532,
    "sha256": "5b47ec7c6584112197db11aacce351daa41a6d068f478ec4bfbf20077c192e4d",
-   "modified": "2026-10-26T19:05:29.650514+00:00"
+   "modified": "2026-10-26T20:54:14.823303+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m20p1/dexseq_gene.tsv",
+   "path": "results/gene_assigned_intergenic_m20p1/dexseq_gene.tsv",
    "bytes": 48744,
    "sha256": "d02322af24f205d0a7979ee9a98750bffe5548ca81afa21b5c9701d8ae1f058e",
-   "modified": "2026-10-26T19:05:40.226117+00:00"
+   "modified": "2026-10-26T20:54:27.704660+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m20p1/dexseq_site.tsv",
+   "path": "results/gene_assigned_intergenic_m20p1/dexseq_site.tsv",
    "bytes": 334140,
    "sha256": "5c9d9f670ff3c7b3e5dd86515453d26682f58f4804c94f76e0ab0e3be5b3698d",
-   "modified": "2026-10-26T19:05:40.194166+00:00"
+   "modified": "2026-10-26T20:54:27.672065+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m20p1/samples.tsv",
+   "path": "results/gene_assigned_intergenic_m20p1/samples.tsv",
    "bytes": 94,
    "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
-   "modified": "2026-10-26T19:05:29.651448+00:00"
+   "modified": "2026-10-26T20:54:14.824037+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m20p1/site_counts.tsv",
+   "path": "results/gene_assigned_intergenic_m20p1/site_counts.tsv",
    "bytes": 101854,
    "sha256": "cc62a4f2b60e52b35d4f1ca657e839b1b9d3353159e7b716a7e24fa1a1eba935",
-   "modified": "2026-10-26T19:05:29.620729+00:00"
+   "modified": "2026-10-26T20:54:14.793274+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m20p1/sites.tsv",
+   "path": "results/gene_assigned_intergenic_m20p1/sites.tsv",
    "bytes": 104341,
    "sha256": "046c2178b81acd160eb846631d7e3b998225e9a8ffa4829b1e5e5464ed3eb457",
-   "modified": "2026-10-26T19:05:29.624865+00:00"
+   "modified": "2026-10-26T20:54:14.797133+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m20p1/stager.tsv",
+   "path": "results/gene_assigned_intergenic_m20p1/stager.tsv",
    "bytes": 146670,
    "sha256": "67fef9197392ac3427eba453d51dddff4692377bd07090b9bb6cce4f957f94f1",
-   "modified": "2026-10-26T19:05:40.229487+00:00"
+   "modified": "2026-10-26T20:54:27.708817+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m20p1/windows.tsv",
+   "path": "results/gene_assigned_intergenic_m20p1/windows.tsv",
    "bytes": 394239,
    "sha256": "3ec09183d6f490a0186932b483758b56171919b5987dc16e46b6c01d506f1a8b",
-   "modified": "2026-10-26T19:05:29.637901+00:00"
+   "modified": "2026-10-26T20:54:14.810418+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m30p2/assignment.tsv",
+   "path": "results/gene_assigned_intergenic_m30p2/assignment.tsv",
    "bytes": 259828,
    "sha256": "6e17b95fabb37bd0f0fecdbff729349e6e0cbb768dd2ef32761b7738f27f4479",
-   "modified": "2026-10-26T19:03:37.739153+00:00"
+   "modified": "2026-10-26T20:52:22.549821+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m30p2/dexseq_gene.tsv",
+   "path": "results/gene_assigned_intergenic_m30p2/dexseq_gene.tsv",
    "bytes": 48688,
    "sha256": "6f4658bd968e945affe0c2181785adf81086977f36c8c34a9220793c1b4edfe0",
-   "modified": "2026-10-26T19:03:48.265992+00:00"
+   "modified": "2026-10-26T20:52:33.395805+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m30p2/dexseq_site.tsv",
+   "path": "results/gene_assigned_intergenic_m30p2/dexseq_site.tsv",
    "bytes": 331003,
    "sha256": "d41a8f14c6a85036a56d6e61c4784a0be3b79830451202ca09296c1a8f0dd846",
-   "modified": "2026-10-26T19:03:48.231755+00:00"
+   "modified": "2026-10-26T20:52:33.364111+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m30p2/samples.tsv",
+   "path": "results/gene_assigned_intergenic_m30p2/samples.tsv",
    "bytes": 94,
    "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
-   "modified": "2026-10-26T19:03:37.740246+00:00"
+   "modified": "2026-10-26T20:52:22.550901+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m30p2/site_counts.tsv",
+   "path": "results/gene_assigned_intergenic_m30p2/site_counts.tsv",
    "bytes": 100800,
    "sha256": "c128b834193a15b269641aa5e97065e168167a6a1d51d2715cdd8e156784c2fe",
-   "modified": "2026-10-26T19:03:37.709848+00:00"
+   "modified": "2026-10-26T20:52:22.519369+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m30p2/sites.tsv",
+   "path": "results/gene_assigned_intergenic_m30p2/sites.tsv",
    "bytes": 102960,
    "sha256": "890ec29e195260b8327c61efb57a201a66cae523931eb97ee54112997970d08a",
-   "modified": "2026-10-26T19:03:37.713044+00:00"
+   "modified": "2026-10-26T20:52:22.523150+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m30p2/stager.tsv",
+   "path": "results/gene_assigned_intergenic_m30p2/stager.tsv",
    "bytes": 145720,
    "sha256": "06b1a55b277e756cf5c1d7b09b5a43210d93db49bb7065fec45adc619f4889a4",
-   "modified": "2026-10-26T19:03:48.269331+00:00"
+   "modified": "2026-10-26T20:52:33.399159+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m30p2/windows.tsv",
+   "path": "results/gene_assigned_intergenic_m30p2/windows.tsv",
    "bytes": 394646,
    "sha256": "f1afa41636352eadf2c9614e7a02217905c56a97173f8e9507bf6f374060899b",
-   "modified": "2026-10-26T19:03:37.726234+00:00"
+   "modified": "2026-10-26T20:52:22.536572+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m50p5/assignment.tsv",
+   "path": "results/gene_assigned_intergenic_m50p5/assignment.tsv",
    "bytes": 258256,
    "sha256": "a357d634bcd995bee17aad9424a2726db4c73b9eea33bd2bc0b315f3692851f4",
-   "modified": "2026-10-26T19:04:33.698101+00:00"
+   "modified": "2026-10-26T20:53:18.752496+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m50p5/dexseq_gene.tsv",
+   "path": "results/gene_assigned_intergenic_m50p5/dexseq_gene.tsv",
    "bytes": 51989,
    "sha256": "e9b7908ef4a7fcc3da2f8f55728c5e5007d714710696838ff4b94170f7154527",
-   "modified": "2026-10-26T19:04:44.265595+00:00"
+   "modified": "2026-10-26T20:53:29.335359+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m50p5/dexseq_site.tsv",
+   "path": "results/gene_assigned_intergenic_m50p5/dexseq_site.tsv",
    "bytes": 347894,
    "sha256": "5ea272cf2e70cf710cd6b6068bde7a031fbbbbca361638ab005579f225828b0c",
-   "modified": "2026-10-26T19:04:44.233445+00:00"
+   "modified": "2026-10-26T20:53:29.303232+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m50p5/samples.tsv",
+   "path": "results/gene_assigned_intergenic_m50p5/samples.tsv",
    "bytes": 94,
    "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
-   "modified": "2026-10-26T19:04:33.698991+00:00"
+   "modified": "2026-10-26T20:53:18.753357+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m50p5/site_counts.tsv",
+   "path": "results/gene_assigned_intergenic_m50p5/site_counts.tsv",
    "bytes": 105376,
    "sha256": "ea0284d27643dd091517c35543f2efa87f1df61b9c3d7180a917284c76bb3455",
-   "modified": "2026-10-26T19:04:33.668522+00:00"
+   "modified": "2026-10-26T20:53:18.723458+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m50p5/sites.tsv",
+   "path": "results/gene_assigned_intergenic_m50p5/sites.tsv",
    "bytes": 107398,
    "sha256": "7cc06ad25505f3d88b7ad626d171bf8cbf150404a8b85574c9393592ef4a99c4",
-   "modified": "2026-10-26T19:04:33.673024+00:00"
+   "modified": "2026-10-26T20:53:18.727043+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m50p5/stager.tsv",
+   "path": "results/gene_assigned_intergenic_m50p5/stager.tsv",
    "bytes": 153036,
    "sha256": "17fba74937ab02020ff1b8c2da85aca9f04bcb38fbcd543bee934fd0a648ff36",
-   "modified": "2026-10-26T19:04:44.269199+00:00"
+   "modified": "2026-10-26T20:53:29.338854+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_intergenic_m50p5/windows.tsv",
+   "path": "results/gene_assigned_intergenic_m50p5/windows.tsv",
    "bytes": 392151,
    "sha256": "20297e82847b9592285e8f5b5f64e9696606e51df8fa5d0564468d11192e6610",
-   "modified": "2026-10-26T19:04:33.685562+00:00"
+   "modified": "2026-10-26T20:53:18.740103+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m20p1/assignment.tsv",
+   "path": "results/gene_assigned_nanopore_m20p1/assignment.tsv",
    "bytes": 201557,
    "sha256": "e04a6827dbef97140cc41fafe8248f5dca7ff53e90e6dc9c5d824954fe9bb28b",
-   "modified": "2026-10-26T19:02:38.293277+00:00"
+   "modified": "2026-10-26T20:51:22.715747+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m20p1/dexseq_gene.tsv",
+   "path": "results/gene_assigned_nanopore_m20p1/dexseq_gene.tsv",
    "bytes": 47115,
    "sha256": "237b53e9a01382c266109c90fb95962a54991f4c4e898c1bf63c9fa5799141c1",
-   "modified": "2026-10-26T19:02:48.902455+00:00"
+   "modified": "2026-10-26T20:51:33.621477+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m20p1/dexseq_site.tsv",
+   "path": "results/gene_assigned_nanopore_m20p1/dexseq_site.tsv",
    "bytes": 325346,
    "sha256": "ee0e1acd608a442d5e6faf19d2a2b255cddb6e46a190f3a48f45f61927af5943",
-   "modified": "2026-10-26T19:02:48.869893+00:00"
+   "modified": "2026-10-26T20:51:33.587658+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m20p1/samples.tsv",
+   "path": "results/gene_assigned_nanopore_m20p1/samples.tsv",
    "bytes": 94,
    "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
-   "modified": "2026-10-26T19:02:38.294347+00:00"
+   "modified": "2026-10-26T20:51:22.716597+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m20p1/site_counts.tsv",
+   "path": "results/gene_assigned_nanopore_m20p1/site_counts.tsv",
    "bytes": 99230,
    "sha256": "e66e33e7af92191204571eb5572032361bb1795cd363ed80885afd47e806a98e",
-   "modified": "2026-10-26T19:02:38.267815+00:00"
+   "modified": "2026-10-26T20:51:22.690128+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m20p1/sites.tsv",
+   "path": "results/gene_assigned_nanopore_m20p1/sites.tsv",
    "bytes": 101690,
    "sha256": "2a39627d67920162c560150a9297c930321c8f838c58585aebf89cef28879e18",
-   "modified": "2026-10-26T19:02:38.271183+00:00"
+   "modified": "2026-10-26T20:51:22.693696+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m20p1/stager.tsv",
+   "path": "results/gene_assigned_nanopore_m20p1/stager.tsv",
    "bytes": 142282,
    "sha256": "01798c222055440a43f6d7c787cfd6f2b41c9851bf0f6c9789493cff775b5eec",
-   "modified": "2026-10-26T19:02:48.905867+00:00"
+   "modified": "2026-10-26T20:51:33.624861+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m20p1/windows.tsv",
+   "path": "results/gene_assigned_nanopore_m20p1/windows.tsv",
    "bytes": 358104,
    "sha256": "44c43496c7694dbba9dec014f24e675e080c9c175d9591c1781d6828065c7a8c",
-   "modified": "2026-10-26T19:02:38.282898+00:00"
+   "modified": "2026-10-26T20:51:22.705481+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m30p2/assignment.tsv",
+   "path": "results/gene_assigned_nanopore_m30p2/assignment.tsv",
    "bytes": 197551,
    "sha256": "c23dd83a2dfff505f1e49ad766ae130bd7e9aac6342e25e417302708eb25740b",
-   "modified": "2026-10-26T19:00:56.475758+00:00"
+   "modified": "2026-10-26T20:49:39.242807+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m30p2/dexseq_gene.tsv",
+   "path": "results/gene_assigned_nanopore_m30p2/dexseq_gene.tsv",
    "bytes": 46858,
    "sha256": "a31d269ac6ca0b42aadb024e3ad2db3ade8aa77c7c073586fc86445a4981d81a",
-   "modified": "2026-10-26T19:01:06.842457+00:00"
+   "modified": "2026-10-26T20:49:50.088206+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m30p2/dexseq_site.tsv",
+   "path": "results/gene_assigned_nanopore_m30p2/dexseq_site.tsv",
    "bytes": 321998,
    "sha256": "8315166ab5d416f595a0561c649e997e4a2f9fa8105156367ef30c5f747c6440",
-   "modified": "2026-10-26T19:01:06.809261+00:00"
+   "modified": "2026-10-26T20:49:50.055348+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m30p2/samples.tsv",
+   "path": "results/gene_assigned_nanopore_m30p2/samples.tsv",
    "bytes": 94,
    "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
-   "modified": "2026-10-26T19:00:56.476692+00:00"
+   "modified": "2026-10-26T20:49:39.243711+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m30p2/site_counts.tsv",
+   "path": "results/gene_assigned_nanopore_m30p2/site_counts.tsv",
    "bytes": 98182,
    "sha256": "7a52c728cb5d11f13393414d03f58660f7a7776b69d20c1cf644e324e59a39ba",
-   "modified": "2026-10-26T19:00:56.450986+00:00"
+   "modified": "2026-10-26T20:49:39.216541+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m30p2/sites.tsv",
+   "path": "results/gene_assigned_nanopore_m30p2/sites.tsv",
    "bytes": 100305,
    "sha256": "4c28d2e873ce13e126bed86a3c8388d10d812a3cb378d123f5532313bf88d9e0",
-   "modified": "2026-10-26T19:00:56.454745+00:00"
+   "modified": "2026-10-26T20:49:39.220758+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m30p2/stager.tsv",
+   "path": "results/gene_assigned_nanopore_m30p2/stager.tsv",
    "bytes": 140948,
    "sha256": "b3ea3561cfc628c84b87f8d3e5cc98eb6e08ebb315eece8ba91d437579a805a1",
-   "modified": "2026-10-26T19:01:06.845772+00:00"
+   "modified": "2026-10-26T20:49:50.091751+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m30p2/windows.tsv",
+   "path": "results/gene_assigned_nanopore_m30p2/windows.tsv",
    "bytes": 358510,
    "sha256": "d4013334a51acb0d85bdcbd515c1765621ff989af6b433a28b9848fc4d3e5611",
-   "modified": "2026-10-26T19:00:56.466472+00:00"
+   "modified": "2026-10-26T20:49:39.232984+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m50p5/assignment.tsv",
+   "path": "results/gene_assigned_nanopore_m50p5/assignment.tsv",
    "bytes": 200152,
    "sha256": "c4de05c97b52dc40b1b2d48471fdc3a3390175a6babe83589cf564b4790260f4",
-   "modified": "2026-10-26T19:01:47.139282+00:00"
+   "modified": "2026-10-26T20:50:30.868824+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m50p5/dexseq_gene.tsv",
+   "path": "results/gene_assigned_nanopore_m50p5/dexseq_gene.tsv",
    "bytes": 50586,
    "sha256": "0e6dc7052e06034c17a314b5731e89e8398c8682694b15445fcaf451636cab7c",
-   "modified": "2026-10-26T19:01:57.543657+00:00"
+   "modified": "2026-10-26T20:50:41.856767+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m50p5/dexseq_site.tsv",
+   "path": "results/gene_assigned_nanopore_m50p5/dexseq_site.tsv",
    "bytes": 339168,
    "sha256": "2007b0bf8c50917b52471b62d178a6599166fad2aca45dbd2ada99fe3c3a47fa",
-   "modified": "2026-10-26T19:01:57.511491+00:00"
+   "modified": "2026-10-26T20:50:41.823553+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m50p5/samples.tsv",
+   "path": "results/gene_assigned_nanopore_m50p5/samples.tsv",
    "bytes": 94,
    "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
-   "modified": "2026-10-26T19:01:47.140081+00:00"
+   "modified": "2026-10-26T20:50:30.869704+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m50p5/site_counts.tsv",
+   "path": "results/gene_assigned_nanopore_m50p5/site_counts.tsv",
    "bytes": 102793,
    "sha256": "ecbda919b5abb7b14a0ba85bc14f41bd5b82e2da715a7aba3b98fde34161f47d",
-   "modified": "2026-10-26T19:01:47.114913+00:00"
+   "modified": "2026-10-26T20:50:30.841725+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m50p5/sites.tsv",
+   "path": "results/gene_assigned_nanopore_m50p5/sites.tsv",
    "bytes": 104785,
    "sha256": "f31c29d384bd96e967b8c95e9a196d0ac25c6479bbbdac3f2f2222afa338131e",
-   "modified": "2026-10-26T19:01:47.118010+00:00"
+   "modified": "2026-10-26T20:50:30.846663+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m50p5/stager.tsv",
+   "path": "results/gene_assigned_nanopore_m50p5/stager.tsv",
    "bytes": 148995,
    "sha256": "6b53c553ed8f7f7f3139228dfe5a1c3bdf55910f06c68842a3c8b271dd5e42ae",
-   "modified": "2026-10-26T19:01:57.546965+00:00"
+   "modified": "2026-10-26T20:50:41.860414+00:00"
   },
   {
-   "path": "results/v2/gene_assigned_nanopore_m50p5/windows.tsv",
+   "path": "results/gene_assigned_nanopore_m50p5/windows.tsv",
    "bytes": 356016,
    "sha256": "ef03ccf6fc925329b9b2aaa8318c1c468fdb80bcb5c3226f8cb86910ebb88150",
-   "modified": "2026-10-26T19:01:47.129334+00:00"
+   "modified": "2026-10-26T20:50:30.858548+00:00"
   },
   {
-   "path": "results/v2/docs/mapq_sensitivity_nanopore.tsv",
-   "bytes": 733,
-   "sha256": "7ca9dce669aa8d0b55650c555dbdd98aa75ba8405b5d5a6105c87bcce498c10a",
-   "modified": "2026-10-26T19:18:51.580765+00:00"
+   "path": "results/docs/mapq_sensitivity_nanopore.tsv",
+   "bytes": 828,
+   "sha256": "8f54fd0f2265f6cac7675bc87924cd9b53d8ff1afec9985a6d6ba14cb75f03af",
+   "modified": "2026-10-26T21:07:43.044226+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq1/strong_end_usage_nanopore.tsv",
+   "path": "results/mapq_sensitivity/mapq1/strong_end_usage_nanopore.tsv",
    "bytes": 329903,
    "sha256": "12c50ca9f27f312e39b01c1e6f7a78714399b5338d57f0818b1dab556cf9ab93",
-   "modified": "2026-10-26T19:08:20.285181+00:00"
+   "modified": "2026-10-26T20:57:12.253239+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq10/strong_end_usage_nanopore.tsv",
+   "path": "results/mapq_sensitivity/mapq10/strong_end_usage_nanopore.tsv",
    "bytes": 314462,
    "sha256": "428e2d4f16d82b4830eef4925d7af1d75a254371adca42e5c590dfe28c46fdd3",
-   "modified": "2026-10-26T19:11:01.576437+00:00"
+   "modified": "2026-10-26T20:59:51.405347+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq20_no_secondary_rule/strong_end_usage_nanopore.tsv",
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/strong_end_usage_nanopore.tsv",
    "bytes": 311115,
    "sha256": "0f3f8a55397685d146b6cf8f5e355d40306ede64fac1592bb29aa68ce605a83b",
-   "modified": "2026-10-26T19:18:51.036628+00:00"
+   "modified": "2026-10-26T21:07:42.510877+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq30/strong_end_usage_nanopore.tsv",
+   "path": "results/mapq_sensitivity/mapq30/strong_end_usage_nanopore.tsv",
    "bytes": 308660,
    "sha256": "a60ad12af0b4f05393286ada3124bcaad2dadd7f5ace5ec46893d4825ebe3eb5",
-   "modified": "2026-10-26T19:13:38.561103+00:00"
+   "modified": "2026-10-26T21:02:30.413405+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq60/strong_end_usage_nanopore.tsv",
+   "path": "results/mapq_sensitivity/mapq60/strong_end_usage_nanopore.tsv",
    "bytes": 296448,
    "sha256": "1198a2313f24b859566ac7918eeb8249e1ae06a3f5147dc8714711a2eba54441",
-   "modified": "2026-10-26T19:16:17.165741+00:00"
+   "modified": "2026-10-26T21:05:07.756266+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/assignment.tsv",
+   "bytes": 201258,
+   "sha256": "d454584cd6583ed481f9b42688bf29882a15c5b9be810d8a464bf44637e8aac0",
+   "modified": "2026-10-26T20:56:58.115511+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/dexseq_gene.tsv",
+   "bytes": 49341,
+   "sha256": "01e5ea192e01e90f5a3af2286c7ec09f50737bba71bf97fda8a3b2e7fcf3d941",
+   "modified": "2026-10-26T20:57:09.097348+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/dexseq_site.tsv",
+   "bytes": 346441,
+   "sha256": "4bc45740c08b4988c159e83fcbc8d8ac496c4ab464b2327b90c75c7ebe44b3eb",
+   "modified": "2026-10-26T20:57:09.063788+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T20:56:58.116567+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/site_counts.tsv",
+   "bytes": 105884,
+   "sha256": "d1408a41cb5d126cfdfa1216117a08739e8edfa85b44127cade36a9e26a79889",
+   "modified": "2026-10-26T20:56:58.088078+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/sites.tsv",
+   "bytes": 108522,
+   "sha256": "c549cf455a14c5d7c15facd90299be7f639b36d5efa6077d5fe0b3396f05332d",
+   "modified": "2026-10-26T20:56:58.092155+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/stager.tsv",
+   "bytes": 150375,
+   "sha256": "c7f15de138dec32d086e41fe46df057f41cc2d1e06258e673c79334a40e81692",
+   "modified": "2026-10-26T20:57:09.100833+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m20p1/windows.tsv",
    "bytes": 358023,
    "sha256": "c7a98c0caeddc55fde45eacf302c3fc863eb5e39f31da849185ffb59aacd49bf",
-   "modified": "2026-10-26T19:08:06.958176+00:00"
+   "modified": "2026-10-26T20:56:58.104772+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/assignment.tsv",
+   "bytes": 197281,
+   "sha256": "1387ee9616202e3fbb0e9539e0f10cffe1b0940f7e328b8ca975aacc865db050",
+   "modified": "2026-10-26T20:55:12.720163+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/dexseq_gene.tsv",
+   "bytes": 49672,
+   "sha256": "f7cc2e74b9a87c2d13c266cabfd697702da79f5d3808c39d23ccf10664c6cfd0",
+   "modified": "2026-10-26T20:55:23.935891+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/dexseq_site.tsv",
+   "bytes": 343928,
+   "sha256": "97c4e2747818f3f3997cb0164a521c1aa264e211bb9495e306f326b775cae1b8",
+   "modified": "2026-10-26T20:55:23.902461+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T20:55:12.720991+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/site_counts.tsv",
+   "bytes": 104976,
+   "sha256": "664a0e5f5d97d3fe7b3006e525fdaf852a50bf4b01d9a56c0f9b8070c85635c3",
+   "modified": "2026-10-26T20:55:12.692139+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/sites.tsv",
+   "bytes": 107150,
+   "sha256": "650075a94e11fa04660b46ee3360a9395d76c04de7f1deac576b5de1e715111e",
+   "modified": "2026-10-26T20:55:12.697302+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/stager.tsv",
+   "bytes": 150255,
+   "sha256": "76acb0c11d798a2c66daa1e053fdfa36737681b64648504d2f0d1174476aed0b",
+   "modified": "2026-10-26T20:55:23.939436+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m30p2/windows.tsv",
    "bytes": 358313,
    "sha256": "fbd8052cc3871235b7e18288c1084977b4697878bcf230d81af8765f84ed8130",
-   "modified": "2026-10-26T19:06:24.285122+00:00"
+   "modified": "2026-10-26T20:55:12.709621+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/assignment.tsv",
+   "bytes": 199957,
+   "sha256": "8a8660bae6a833aa4affc572b8a993cccbe7e51d2969281ba295eef86eaf2011",
+   "modified": "2026-10-26T20:56:05.392924+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/dexseq_gene.tsv",
+   "bytes": 53553,
+   "sha256": "862dd9b99bc8bce34d9de1ddb2b79b572e2e5238f245e21237a22439d3ebc71b",
+   "modified": "2026-10-26T20:56:16.544002+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/dexseq_site.tsv",
+   "bytes": 359106,
+   "sha256": "8b73920a4eafe5a44c11d49768975a428e3ba4f4ba8840474e0c5466e6a7a91b",
+   "modified": "2026-10-26T20:56:16.511698+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T20:56:05.393829+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/site_counts.tsv",
+   "bytes": 109022,
+   "sha256": "3e21cb354ea3d784d54f94fab23944b234f0f7e39c2db15639dbc7de6c824ddf",
+   "modified": "2026-10-26T20:56:05.366333+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/sites.tsv",
+   "bytes": 110963,
+   "sha256": "48a73e6a24e382435a8b719c15ba68380e9593ffd867767a77becb4d4663534b",
+   "modified": "2026-10-26T20:56:05.369981+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/stager.tsv",
+   "bytes": 157849,
+   "sha256": "7c57802b1e605c3e7a8ed9000b0fadeed60b54d248c8bcb7988b10b88e0c6557",
+   "modified": "2026-10-26T20:56:16.547652+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq1/gene_assigned_nanopore_m50p5/windows.tsv",
    "bytes": 355993,
    "sha256": "f3259c09d8bcb503981a9d1b4311f545db1d3019ef9a05614baf069ae6628e43",
-   "modified": "2026-10-26T19:07:15.669855+00:00"
+   "modified": "2026-10-26T20:56:05.382365+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/assignment.tsv",
+   "bytes": 201500,
+   "sha256": "63e1e560dd02f4a93a725a3545929b18ec26bdc87ee0b2d12b5cb10e08c97abc",
+   "modified": "2026-10-26T20:59:37.664888+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/dexseq_gene.tsv",
+   "bytes": 47530,
+   "sha256": "468dd675dd1d4ca3342b37c59d2f2932ac97b0329ee8f30713cb80b4726971d1",
+   "modified": "2026-10-26T20:59:48.531064+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/dexseq_site.tsv",
+   "bytes": 329389,
+   "sha256": "938a1d732a77fa80f4c4e417dd67ed93f7d809064ccc37363b369d824f37732b",
+   "modified": "2026-10-26T20:59:48.498870+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T20:59:37.665720+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/site_counts.tsv",
+   "bytes": 100551,
+   "sha256": "d567c85536e2d5764f88b64313450dc04f9d33003c5c00478f65e6f06e0a32ef",
+   "modified": "2026-10-26T20:59:37.637719+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/sites.tsv",
+   "bytes": 103025,
+   "sha256": "de4c24672cd5c6a50ef67416cdb9c66224bb51ac5d64447e1eb4db0c16615358",
+   "modified": "2026-10-26T20:59:37.642087+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/stager.tsv",
+   "bytes": 143857,
+   "sha256": "a1f281902627ee1d22df55e806ffa978647a26609ba861966ac8c9e2da2ba3a8",
+   "modified": "2026-10-26T20:59:48.534433+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m20p1/windows.tsv",
    "bytes": 358523,
    "sha256": "c56e70ceef736347f59564149b22aac732c8c19e806b7691dab407d3a6f5f993",
-   "modified": "2026-10-26T19:10:48.286167+00:00"
+   "modified": "2026-10-26T20:59:37.654364+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/assignment.tsv",
+   "bytes": 197499,
+   "sha256": "165a293a84d18031ae4dad29c40c438510257ba3821931b4e499496a1812bba2",
+   "modified": "2026-10-26T20:57:53.385493+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/dexseq_gene.tsv",
+   "bytes": 47489,
+   "sha256": "d5de2833ae641a046dbcaf4532027203c2d68e8f1ca9fe2ccc34327a3f167e86",
+   "modified": "2026-10-26T20:58:04.326780+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/dexseq_site.tsv",
+   "bytes": 326510,
+   "sha256": "ee6118f2d605c29d61867d713a131a5fcbadb936dfa00385dbc281e83aad8614",
+   "modified": "2026-10-26T20:58:04.293145+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T20:57:53.386657+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/site_counts.tsv",
+   "bytes": 99632,
+   "sha256": "227d8c132dbbbe5d3d6216ba49b4dab21db478a49c76bc4bed2b3e932d299f71",
+   "modified": "2026-10-26T20:57:53.358439+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/sites.tsv",
+   "bytes": 101709,
+   "sha256": "72e183f4fac6ac26f038a16d3b28532ba226c6dc59cbfa0cb029677e8e33477f",
+   "modified": "2026-10-26T20:57:53.363059+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/stager.tsv",
+   "bytes": 142886,
+   "sha256": "30a5227f9893720f8d32d26e1b20dc3dee270a5f206311535ecf5482ed6ae28e",
+   "modified": "2026-10-26T20:58:04.330473+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m30p2/windows.tsv",
    "bytes": 358813,
    "sha256": "814790a155dc4ff2ed27fa82337fbb6e9974158ee46812eba306d6ea71387ba3",
-   "modified": "2026-10-26T19:09:00.789382+00:00"
+   "modified": "2026-10-26T20:57:53.375263+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/assignment.tsv",
+   "bytes": 200104,
+   "sha256": "0a1bf7ec12815dc01c7dac0d55daa8eb2feaeadbe3fe0d78a1c313a05da89c74",
+   "modified": "2026-10-26T20:58:45.554249+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/dexseq_gene.tsv",
+   "bytes": 51233,
+   "sha256": "c03e28a49ab0dc6425b72d146478f39b06df4c4f703ca565a29f8608e84ea46a",
+   "modified": "2026-10-26T20:58:56.463709+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/dexseq_site.tsv",
+   "bytes": 343642,
+   "sha256": "9a186d281c95958af7572b69e1af4add54c98d2da417845c61e50a018ae04c05",
+   "modified": "2026-10-26T20:58:56.431448+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T20:58:45.555225+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/site_counts.tsv",
+   "bytes": 104201,
+   "sha256": "4a4bc4ff2346c6b47c87c8c1c768eae6c543ff0c7af158f25e51aa7eeb4cbec9",
+   "modified": "2026-10-26T20:58:45.527055+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/sites.tsv",
+   "bytes": 106187,
+   "sha256": "368c5646abcc9e53b69e34e5cbeff43d332bffa723a51d134688d3ded04cd28a",
+   "modified": "2026-10-26T20:58:45.531359+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/stager.tsv",
+   "bytes": 151036,
+   "sha256": "c5edaa88434524f88f11e0b9335a1e34187d6c21f1611996f43beb15996741a4",
+   "modified": "2026-10-26T20:58:56.467296+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq10/gene_assigned_nanopore_m50p5/windows.tsv",
    "bytes": 356377,
    "sha256": "08970f11a2c80000ab1a011b1d736fce1bcae0c44b4fd147a3d42e39460f4cf7",
-   "modified": "2026-10-26T19:09:51.913892+00:00"
+   "modified": "2026-10-26T20:58:45.543763+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/assignment.tsv",
+   "bytes": 201534,
+   "sha256": "6c3ebb70750ceb36f0407ef50745eb17931c5b078c8ea3e0660552d02c800b92",
+   "modified": "2026-10-26T21:07:28.506123+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/dexseq_gene.tsv",
+   "bytes": 47251,
+   "sha256": "a71150e2e205f6cfe7d578b68ba73316b757ba6a37408713cdff6736ab9f0741",
+   "modified": "2026-10-26T21:07:39.628047+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/dexseq_site.tsv",
+   "bytes": 326551,
+   "sha256": "310240aa30096d02a80d8593c0b32738353427354c94541b13e9cb9dec4d3f78",
+   "modified": "2026-10-26T21:07:39.595269+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:07:28.507052+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/site_counts.tsv",
+   "bytes": 99559,
+   "sha256": "d9c0d8c8ad08db4ddbc3e43352702af84f4de6097aa341f2128e610cce7d0805",
+   "modified": "2026-10-26T21:07:28.481433+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/sites.tsv",
+   "bytes": 102049,
+   "sha256": "a11cd72d92e90a604a6ee81a064a3fdc126d81aa9df905e8dc77f8ed60220ae8",
+   "modified": "2026-10-26T21:07:28.484609+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/stager.tsv",
+   "bytes": 142796,
+   "sha256": "b6dee9398f0c7994ac6f11018d698127ca5160c506a65a10ec6c4f6d609f9e78",
+   "modified": "2026-10-26T21:07:39.631449+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m20p1/windows.tsv",
    "bytes": 357996,
    "sha256": "7d8b76259063c94c717bde6bbd445b14c86123250937257e16010324fb3dfcb6",
-   "modified": "2026-10-26T19:18:37.091798+00:00"
+   "modified": "2026-10-26T21:07:28.496141+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/assignment.tsv",
+   "bytes": 197532,
+   "sha256": "1f28a202ddd0f6836ec92f1a0b5da54424d2bfc955e157f5ae84ed334073625c",
+   "modified": "2026-10-26T21:05:47.151850+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/dexseq_gene.tsv",
+   "bytes": 47071,
+   "sha256": "39441431a38ab42dfc7a3960dbd2ec55da899027009aa008da3debc35941aeac",
+   "modified": "2026-10-26T21:05:57.887808+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/dexseq_site.tsv",
+   "bytes": 323393,
+   "sha256": "3f322d1cdb7d1fce745541ac3089b5f227131c9bc555e5ce1632f6adb35394a8",
+   "modified": "2026-10-26T21:05:57.854733+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:05:47.152958+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/site_counts.tsv",
+   "bytes": 98606,
+   "sha256": "e03b7836595c612025ff963503d5b71f7e8fee7b9dc65edab31d32764dc56011",
+   "modified": "2026-10-26T21:05:47.127530+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/sites.tsv",
+   "bytes": 100726,
+   "sha256": "5453b923fc03afb07502513602c6ceecaf59f8da46e13f4e056aedb02990b46f",
+   "modified": "2026-10-26T21:05:47.130656+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/stager.tsv",
+   "bytes": 141591,
+   "sha256": "54785ad4a955f3238df26de51548c1e117c2c4ed4f8847676140ed59a110e37a",
+   "modified": "2026-10-26T21:05:57.891585+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m30p2/windows.tsv",
    "bytes": 358344,
    "sha256": "96effc64057c466f03c47682147cf43f762f12dedec3734fd986d177121a6294",
-   "modified": "2026-10-26T19:16:56.429830+00:00"
+   "modified": "2026-10-26T21:05:47.142430+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/assignment.tsv",
+   "bytes": 200131,
+   "sha256": "fd6452f8f1059f3639dc7d41347294ead5e518d98cb282c8dc5942e1d9e60bcb",
+   "modified": "2026-10-26T21:06:37.454994+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/dexseq_gene.tsv",
+   "bytes": 50912,
+   "sha256": "199eb9086d9e0ddaab43fc313cbcddd7f4f3bae95016056be9f4b869bf8e89fa",
+   "modified": "2026-10-26T21:06:48.468540+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/dexseq_site.tsv",
+   "bytes": 340646,
+   "sha256": "99b78c26b0a0e44c7b03a143edd20eb5d9ade994209592d7db995fd925376c8a",
+   "modified": "2026-10-26T21:06:48.435612+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:06:37.455930+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/site_counts.tsv",
+   "bytes": 103309,
+   "sha256": "85fcbabdd92e41d9d2b646bd5ab07c376e2eed7eeeff4c06a47f4133f36f5981",
+   "modified": "2026-10-26T21:06:37.429210+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/sites.tsv",
+   "bytes": 105265,
+   "sha256": "7f1ed6b947a2c32e88ca17da1112f191d3424a0413b17210c38df9dbb12c2499",
+   "modified": "2026-10-26T21:06:37.432479+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/stager.tsv",
+   "bytes": 149781,
+   "sha256": "d2ac7aa9eca335160af712f8f46a335c67b00d892d3291c13e0378459fa55ad3",
+   "modified": "2026-10-26T21:06:48.472132+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq20_no_secondary_rule/gene_assigned_nanopore_m50p5/windows.tsv",
    "bytes": 355792,
    "sha256": "840368d03f6b0b6584defcf6143ca1bd7fb2a96c5532aba6b88c373de75f2e7a",
-   "modified": "2026-10-26T19:17:46.379465+00:00"
+   "modified": "2026-10-26T21:06:37.444995+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/assignment.tsv",
+   "bytes": 201643,
+   "sha256": "c7a026366c5f2070aec1be4273e7b927462fa800d7226272902a7feaf0a51095",
+   "modified": "2026-10-26T21:02:16.627366+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/dexseq_gene.tsv",
+   "bytes": 47038,
+   "sha256": "2684d3ec8297f117339343d20c072622a8921f6278304736c72cde677c10d203",
+   "modified": "2026-10-26T21:02:27.584337+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/dexseq_site.tsv",
+   "bytes": 323685,
+   "sha256": "87657ebbdb167113c97bfdd58670132c4de35ce9d73aba246b34d3929ce0cee2",
+   "modified": "2026-10-26T21:02:27.549956+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:02:16.628316+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/site_counts.tsv",
+   "bytes": 98762,
+   "sha256": "1f0ac75feb989735ee4ea25e067c2b9857b22df063d0fa328490b6c7e012ab7f",
+   "modified": "2026-10-26T21:02:16.599577+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/sites.tsv",
+   "bytes": 101207,
+   "sha256": "d6b023904e9f27331b22d34166da5b24cc849ec012eab24917884d803267033f",
+   "modified": "2026-10-26T21:02:16.604038+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/stager.tsv",
+   "bytes": 141844,
+   "sha256": "4c79864a2f8f8e7b944ccb9973ac1c2d9482793ff3973e73ee2808f2a6d8a233",
+   "modified": "2026-10-26T21:02:27.587827+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m20p1/windows.tsv",
    "bytes": 357929,
    "sha256": "2caa730ac94930d0ecb23b12d02b78a3e25552caf7b7a3b918da22478f917fcd",
-   "modified": "2026-10-26T19:13:24.732008+00:00"
+   "modified": "2026-10-26T21:02:16.616185+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/assignment.tsv",
+   "bytes": 197623,
+   "sha256": "614def289b59e1e6c561bc0bb6761d0d4a65e05848345f6cf5726bad1a233c7c",
+   "modified": "2026-10-26T21:00:32.476614+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/dexseq_gene.tsv",
+   "bytes": 46720,
+   "sha256": "54ea66ff405eeff127ae39eb924b6f734186c4b74f6fef1a8ac658e658ffa729",
+   "modified": "2026-10-26T21:00:43.353714+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/dexseq_site.tsv",
+   "bytes": 320188,
+   "sha256": "748be7cb2db05dcd49afeeaf1f7f6d92b21d76abfbcf6488892e9c8e2a98bcd9",
+   "modified": "2026-10-26T21:00:43.321226+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:00:32.477778+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/site_counts.tsv",
+   "bytes": 97668,
+   "sha256": "d8e67752543dc2504065d2437420d589524345282cf4cf02b94b263671fe5970",
+   "modified": "2026-10-26T21:00:32.450044+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/sites.tsv",
+   "bytes": 99759,
+   "sha256": "85e3e5f6dc203d4bf3b3e5c80aeb96fd2384a65de0b8913e53b0300b14a42ea4",
+   "modified": "2026-10-26T21:00:32.453544+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/stager.tsv",
+   "bytes": 140387,
+   "sha256": "0a4a52e6a7c593a6e40517685e84268ba809b52272a32ed0116249a2911e020e",
+   "modified": "2026-10-26T21:00:43.357159+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m30p2/windows.tsv",
    "bytes": 358335,
    "sha256": "faefed5a567d7d92c958d4113435f8342a7db4b74d5aabc6c82054df39383537",
-   "modified": "2026-10-26T19:11:42.228715+00:00"
+   "modified": "2026-10-26T21:00:32.465792+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/assignment.tsv",
+   "bytes": 200250,
+   "sha256": "cf6a67c74c866ea1e40386dfb40c61244f18eadfa71f2752aac61529971cd982",
+   "modified": "2026-10-26T21:01:24.484299+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/dexseq_gene.tsv",
+   "bytes": 50312,
+   "sha256": "8e01396a2e103e58f5fdb21c32699bc0c86377b113256aa3e0af84801ee44bb2",
+   "modified": "2026-10-26T21:01:35.403346+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/dexseq_site.tsv",
+   "bytes": 337118,
+   "sha256": "edec97676e51289e2a9f4d3a01174c0c611bf7387539c436a5e4fe4cf7e1537c",
+   "modified": "2026-10-26T21:01:35.370376+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:01:24.485198+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/site_counts.tsv",
+   "bytes": 102229,
+   "sha256": "91fbe276da05962a28b2b1185e1c87df1bf06255ac06db3767d4b066921264c4",
+   "modified": "2026-10-26T21:01:24.458211+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/sites.tsv",
+   "bytes": 104181,
+   "sha256": "d7d6b4404591311bf9796170f33854c3d8b589a27a61310522864469f14a0519",
+   "modified": "2026-10-26T21:01:24.462445+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/stager.tsv",
+   "bytes": 148093,
+   "sha256": "d4103bab4f9d511d1c0a15aab676b75fe1f091428b496f6dccc51644a905e51a",
+   "modified": "2026-10-26T21:01:35.406965+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq30/gene_assigned_nanopore_m50p5/windows.tsv",
    "bytes": 355841,
    "sha256": "8e845fba7ac8aec7ea235f2cab027d1202576a25e9b9b3e71dec79ab91bce09b",
-   "modified": "2026-10-26T19:12:33.226282+00:00"
+   "modified": "2026-10-26T21:01:24.474482+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/assignment.tsv",
+   "bytes": 202362,
+   "sha256": "a51b91329809822295b3d78217d8e340f9433a506244980fcdf6c0b1cf397ed4",
+   "modified": "2026-10-26T21:04:54.362182+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/dexseq_gene.tsv",
+   "bytes": 45255,
+   "sha256": "beba3057f7339f3570e7549519c53e1515357a6b643b05d20ec409141bd4755c",
+   "modified": "2026-10-26T21:05:05.090889+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/dexseq_site.tsv",
+   "bytes": 309210,
+   "sha256": "73151f82375a91688c191e9fb2f396a6c816b0259665672c7fb040b247876615",
+   "modified": "2026-10-26T21:05:05.058568+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:04:54.363056+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/site_counts.tsv",
+   "bytes": 94326,
+   "sha256": "10924e68bd36bea2d98d26290ea748d67b4fc12b3fbc36bc8088be7b052953b4",
+   "modified": "2026-10-26T21:04:54.338494+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/sites.tsv",
+   "bytes": 96641,
+   "sha256": "a9b914c10280bd445ffa6817c4e6ebe4824852dcd9b731b682dd4e0d5c4dd19d",
+   "modified": "2026-10-26T21:04:54.341572+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/stager.tsv",
+   "bytes": 135780,
+   "sha256": "f2bf9dfa2cc16b198f1ce574dbcab6d6c3b8d2163070f14aa9fc93e08f0081fa",
+   "modified": "2026-10-26T21:05:05.094125+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m20p1/windows.tsv",
    "bytes": 358639,
    "sha256": "a54c841cbea5154e687a15ea03a551cdd185de4290f34c5c7f8dab3416098733",
-   "modified": "2026-10-26T19:16:03.702806+00:00"
+   "modified": "2026-10-26T21:04:54.352599+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/assignment.tsv",
+   "bytes": 198303,
+   "sha256": "b10873c68e702e54c59b9f4acf4a5ce617d721440efed003e0c6440a3d103d9a",
+   "modified": "2026-10-26T21:03:11.410671+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/dexseq_gene.tsv",
+   "bytes": 45325,
+   "sha256": "9fa7a3da79a2a74f7804a18758b7bb0c3461c26ade44130351cbf53feb13fb7b",
+   "modified": "2026-10-26T21:03:22.185377+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/dexseq_site.tsv",
+   "bytes": 306946,
+   "sha256": "95c397d9984d7e9b6fd8432b072ee5e229c4cba7a5e33637b5b4163e90eb5751",
+   "modified": "2026-10-26T21:03:22.152396+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:03:11.411619+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/site_counts.tsv",
+   "bytes": 93571,
+   "sha256": "a0b525c817c0df87cd18dd0964d698b3106b79bfcdc1db1535773e90956b8a1c",
+   "modified": "2026-10-26T21:03:11.384844+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/sites.tsv",
+   "bytes": 95684,
+   "sha256": "9c3a47ce75610ed66bb59f306f1a8fbecaba5774ce06f149fbc518f7d11580f1",
+   "modified": "2026-10-26T21:03:11.388504+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/stager.tsv",
+   "bytes": 135351,
+   "sha256": "911d943f7a6826072b4680ffc35d7f719a282567ebd8b56605915f21a8e8d296",
+   "modified": "2026-10-26T21:03:22.188572+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m30p2/windows.tsv",
    "bytes": 358987,
    "sha256": "fa6cb4ce14c8128f11e0c4db302b4b3467d474c44ea2c2607da637392e53e6a3",
-   "modified": "2026-10-26T19:14:19.794124+00:00"
+   "modified": "2026-10-26T21:03:11.400412+00:00"
   },
   {
-   "path": "results/v2/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/windows.tsv",
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/assignment.tsv",
+   "bytes": 200856,
+   "sha256": "ba738cabaf586b8980d9c8c55bd9e4217fbe48af784b459c6686b2e17c627159",
+   "modified": "2026-10-26T21:04:03.024205+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/dexseq_gene.tsv",
+   "bytes": 48908,
+   "sha256": "3b9dcc4c099813b45698667d3e589969c785d9278b09b67302a2db1d534dad7e",
+   "modified": "2026-10-26T21:04:13.677324+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/dexseq_site.tsv",
+   "bytes": 325330,
+   "sha256": "ffad64346b584860ebb4b9660af32015f8b7e9790e81f2b4947f9ce05e517bb6",
+   "modified": "2026-10-26T21:04:13.644210+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/samples.tsv",
+   "bytes": 94,
+   "sha256": "13ac586e311f63a494cb784635935f875e1d705368cd5dfe2fd4bb24759adf63",
+   "modified": "2026-10-26T21:04:03.025109+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/site_counts.tsv",
+   "bytes": 98642,
+   "sha256": "abd7d66a1539b89e1983f595a8a94b246c7aa564e8b8f2bbcbbefc6ebe797a7a",
+   "modified": "2026-10-26T21:04:02.999793+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/sites.tsv",
+   "bytes": 100672,
+   "sha256": "8409870a9f27c4806f831702ab8fc184f14caa5717cbc59c3e428c31060292e3",
+   "modified": "2026-10-26T21:04:03.003032+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/stager.tsv",
+   "bytes": 143450,
+   "sha256": "163a4dbe58ea15f387070f4a031c0271e2f02b07484d78ecfbf63a6dd705e7ef",
+   "modified": "2026-10-26T21:04:13.680758+00:00"
+  },
+  {
+   "path": "results/mapq_sensitivity/mapq60/gene_assigned_nanopore_m50p5/windows.tsv",
    "bytes": 356377,
    "sha256": "0ca62ae6c6755a6e8ca964396f0fd84ea3a05cc3a4bafde5a82fb798241a4889",
-   "modified": "2026-10-26T19:15:11.914941+00:00"
+   "modified": "2026-10-26T21:04:03.014307+00:00"
   },
   {
-   "path": "results/v2/docs/transcript_abundance.tsv",
+   "path": "results/docs/transcript_abundance.tsv",
    "bytes": 17833,
    "sha256": "d9e840b7fd0d9573cd52b7e14c12b8925b9d5b32266d71b41212c4347af24ed2",
-   "modified": "2026-10-26T18:59:50.630234+00:00"
+   "modified": "2026-10-26T20:48:32.619620+00:00"
   },
   {
-   "path": "results/v2/transcripts/catalogue.tsv",
+   "path": "results/transcripts/catalogue.tsv",
    "bytes": 443259,
    "sha256": "e3151c25d114c0bf02d491568902ee9b7b7c6d1bb71e1f636c4ff3dc7f7b29ce",
-   "modified": "2026-10-26T18:59:49.700987+00:00"
+   "modified": "2026-10-26T20:48:31.677783+00:00"
   },
   {
-   "path": "results/v2/transcripts/gene_full_length_counts.tsv",
+   "path": "results/transcripts/gene_full_length_counts.tsv",
    "bytes": 173891,
    "sha256": "97f298125be99d9c4cf95dacb4819d7220967f58677427bdbb45b2a498583159",
-   "modified": "2026-10-26T18:59:49.711166+00:00"
+   "modified": "2026-10-26T20:48:31.688580+00:00"
   },
   {
-   "path": "results/v2/transcripts/transcript_abundance.tsv",
+   "path": "results/transcripts/transcript_abundance.tsv",
    "bytes": 17833,
    "sha256": "d9e840b7fd0d9573cd52b7e14c12b8925b9d5b32266d71b41212c4347af24ed2",
-   "modified": "2026-10-26T18:59:50.608246+00:00"
+   "modified": "2026-10-26T20:48:32.595521+00:00"
   },
   {
-   "path": "results/v2/transcripts/unassigned_reads.tsv",
+   "path": "results/transcripts/unassigned_reads.tsv",
    "bytes": 93,
    "sha256": "eeb466483d3c6a3e5153cd15231620d7783ae500039dcfba8505fac1424a3f15",
-   "modified": "2026-10-26T18:59:49.711942+00:00"
+   "modified": "2026-10-26T20:48:31.689576+00:00"
   },
   {
-   "path": "results/v2/docs/RESULTS_v2.md",
-   "bytes": 34096,
-   "sha256": "e951bb460d3203cbde399372899b17996cf02087288dfefc08b97fee63088af7",
-   "modified": "2026-10-26T19:18:53.266222+00:00"
-  },
-  {
-   "path": "results/v2/docs/figures/index.html",
-   "bytes": 444585,
-   "sha256": "11f4e286d310c4e8306fba4e5476040501e0c51861dd36bfb02688579a47cb84",
-   "modified": "2026-10-26T20:08:48.252859+00:00"
-  },
-  {
-   "path": "results/v2/docs/figures/index_strong.html",
-   "bytes": 64384,
-   "sha256": "5cebd9843f4c1842407af6b5c7c2482faaaacafc15b71c36098a33495d9d9bbd",
-   "modified": "2026-10-26T20:08:48.734663+00:00"
+   "path": "results/docs/RESULTS_v2.md",
+   "bytes": 34073,
+   "sha256": "482d6f09b235eff234752970ada33c02dc17d75f9cec909c204f34bd4b8ec3e0",
+   "modified": "2026-10-26T21:07:44.720224+00:00"
   }
  ]
 }
