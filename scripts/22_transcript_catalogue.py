@@ -104,7 +104,8 @@ def main():
     records = []   # dict(chrom, strand, five_lo, five_hi, three_lo, three_hi, n)
     reads["record"] = -1
     for (chrom, strand), grp in reads.groupby(["chrom", "strand"]):
-        grp = grp.sort_values("five")
+        # full order (5' end, 3' end, replicate) with a stable sort, so the greedy grouping does not depend on the platform's tie order
+        grp = grp.sort_values(["five", "three", "rep"], kind="mergesort")
         open_recs = []
         for i, r in grp.iterrows():
             placed = False
