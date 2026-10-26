@@ -1,0 +1,34 @@
+{
+  "title": "tbrucei_alternative_3end_paper: code and data for the analysis of alternative 3' end usage between Trypanosoma brucei life stages from direct RNA nanopore sequencing",
+  "upload_type": "software",
+  "description": "<p>Code, input data and a Docker environment that reproduce the analysis of differential poly(A) site usage between bloodstream and procyclic forms of <em>Trypanosoma brucei</em>, from direct RNA nanopore sequencing of three replicates per stage.</p><p>For every gene with enough poly(A) read ends in every replicate, the ends were grouped into clusters without reading the life stage, and the share of ends in each cluster was compared between stages with DEXSeq and stageR (gene-level overall false discovery rate 5 percent). Each supported cluster was interpreted from the reads that end in it (connected to the gene, or belonging to an independent transcript). A second count over the reads assigned to the gene (covering its coding sequence, uniquely placed) gives the headline: among 742 adequately measured genes, 52 show strong evidence of a different 3' end between the two stages.</p><p>Contents:</p><ul><li><code>data/</code>: curated TREU927 annotation, the reference genome, the poly(A) read ids and the 3' end positions of every replicate, with MD5 checksums.</li><li><code>scripts/</code>: one script per step, from the inputs to the gene list and the figures, and checks against the published tables.</li><li><code>expected/</code>: the published tables and the run manifests (inputs, options, software versions, output checksums).</li><li><code>upstream/</code>: the basecalling, alignment, poly(A) estimation and read selection scripts that produced the inputs on the cluster.</li><li><code>Dockerfile</code> and <code>Makefile</code>: <code>make all</code> recomputes every table and compares it with the published one.</li></ul><p>The companion data archive on Zenodo holds the four alignment files (BAM) the analysis reads, the complete results of one run and the figures of every supported gene.</p><p>Code is licensed under MIT; the data in <code>data/</code> and <code>expected/</code> under CC BY 4.0. Raw reads are in the European Nucleotide Archive (ERR10957780 to ERR10957785).</p>",
+  "creators": [
+    {
+      "name": "Tinti, Michele",
+      "affiliation": "University of Dundee",
+      "orcid": "0000-0002-0051-017X"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": [
+    "Trypanosoma brucei",
+    "polyadenylation",
+    "alternative 3' end",
+    "3' UTR",
+    "direct RNA sequencing",
+    "nanopore",
+    "DEXSeq",
+    "stageR",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://www.ebi.ac.uk/ena/browser/view/ERR10957780",
+      "relation": "isSupplementTo",
+      "resource_type": "dataset"
+    }
+  ],
+  "language": "eng",
+  "version": "1.0.0"
+}

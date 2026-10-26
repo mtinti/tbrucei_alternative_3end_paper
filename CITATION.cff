@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper and this archive."
+title: "tbrucei_alternative_3end_paper: code and data for the analysis of alternative 3' end usage between Trypanosoma brucei life stages from direct RNA nanopore sequencing"
+type: software
+authors:
+  - family-names: Tinti
+    given-names: Michele
+    affiliation: University of Dundee
+    orcid: "https://orcid.org/0000-0002-0051-017X"
+version: 1.0.0
+date-released: 2026-10-26
+repository-code: "https://github.com/mtinti/tbrucei_alternative_3end_paper"
+license: MIT
+keywords:
+  - Trypanosoma brucei
+  - polyadenylation
+  - alternative 3' end
+  - 3' UTR
+  - direct RNA sequencing
+  - nanopore
+  - DEXSeq
+  - stageR
+abstract: >-
+  Code, input data and a Docker environment that reproduce the analysis of
+  differential poly(A) site usage between bloodstream and procyclic forms of
+  Trypanosoma brucei from direct RNA nanopore sequencing, three replicates
+  per stage: among 742 adequately measured genes, 52 show strong evidence of
+  a different 3' end between the two stages.

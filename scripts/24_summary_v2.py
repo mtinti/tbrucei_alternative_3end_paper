@@ -1,0 +1,204 @@
+#!/usr/bin/env python3
+"""Write the results summary of the revised analysis (docs/methods.md, section 6) from the recorded run.
+
+Every number comes from the files of one run: the family tables (step 16),
+the cluster windows (step 17), the DEXSeq and stageR tables (step 18), the
+support-by-setting tables (step 20), the events (step 21), the permutation
+diagnostic (step 19) and the transcript abundance test (step 23).
+"""
+import argparse
+import os
+import pandas as pd
+
+
+def family_block(mode, out_root):
+    fam = pd.read_csv(f"{out_root}/family/family_{mode}.tsv", sep="\t")
+    win = pd.read_csv(f"{out_root}/clusters_{mode}_m30p2/windows.tsv", sep="\t")
+    g = pd.read_csv(f"{out_root}/clusters_{mode}_m30p2/dexseq_gene.tsv", sep="\t")
+    s = pd.read_csv(f"{out_root}/clusters_{mode}_m30p2/dexseq_site.tsv", sep="\t")
+    sup = pd.read_csv(f"{out_root}/docs/support_by_setting_{mode}.tsv", sep="\t")
+    ev = pd.read_csv(f"{out_root}/docs/events_{mode}.tsv", sep="\t")
+    perm = pd.read_csv(f"{out_root}/clusters_{mode}_m30p2/permutation_calls.tsv", sep="\t")
+    excl = fam.loc[~fam["in_family"], "exclusion_reason"].value_counts()
+    rows = [f"| Genes with a CDS | {len(fam)} |"]
+    rows += [f"| Excluded: {k} | {v} |" for k, v in excl.items()]
+    rows += [f"| In the family (10 or more ends in every replicate) | {int(fam['in_family'].sum())} |",
+             f"| Testable (two or more supported clusters) | {int(win['testable'].sum())} |",
+             f"| Screened by DEXSeq (gene q value available) | {int(g['gene_qvalue'].notna().sum())} |",
+             f"| Supported genes (stageR, gene-level OFDR 5 percent) | {int(g['gene_confirmed'].sum())} |",
+             f"| Supported clusters (sites) in those genes | {int((s['site_confirmed'] & (s['feature_id'] != 'other') & s['gene_id'].isin(g.loc[g['gene_confirmed'], 'gene_id'])).sum())} |",
+             f"| Supported genes whose change includes the unclustered 'other' ends | {int((s['site_confirmed'] & (s['feature_id'] == 'other')).sum())} |",
+             f"| Features without a p value (kept as 1) | {int(s['p_missing'].sum())} |",
+             f"| Supported in all analyses (primary, both other cluster settings, DRIMSeq) | {int(sup['supported_in_all_analyses'].sum())} |",
+             f"| Supported wherever tested (some analyses could not test the gene) | {int(sup['supported_wherever_tested'].sum())} |",
+             f"| Supported under merge 50, peak 5 percent | {int(sup['merge50_peak5_supported'].sum())} |",
+             f"| Supported under merge 20, peak 1 percent | {int(sup['merge20_peak1_supported'].sum())} |",
+             f"| Supported by DRIMSeq on the same clusters (observed counts, no pseudocount) | {int(sup['drimseq_supported'].sum())} of {int(sup['drimseq_tested'].sum())} tested |"]
+    best = s[s["site_confirmed"] & (s["feature_id"] != "other") & s["gene_id"].isin(g.loc[g["gene_confirmed"], "gene_id"])]
+    best = best.sort_values("pvalue").drop_duplicates("gene_id")
+    rows += [f"| Supported genes whose strongest site moves by more than 20 points of usage | {int((best['usage_change_points'].abs() > 20).sum())} |",
+             f"| Strongest site used more in PCF / in BSF | {int((best['usage_change_points'] > 0).sum())} / {int((best['usage_change_points'] < 0).sum())} |"]
+    ev_counts = ev["label"].value_counts()
+    ev_rows = [f"| {k} | {v} |" for k, v in ev_counts.items()]
+    mixed = perm[~perm["true_split"]]
+    perm_text = (f"The true split gives {int(perm.loc[perm['true_split'], 'genes_confirmed'].iloc[0])} supported genes. "
+                 f"The nine splits that mix the stages give {', '.join(str(x) for x in mixed['genes_confirmed'])} genes "
+                 f"(median {mixed['genes_confirmed'].median():.0f}). These mixed splits still contain real stage effects, so their "
+                 f"counts are a diagnostic of what a wrong labelling produces with these cluster definitions, not an estimate of "
+                 f"the false discoveries in the true comparison.")
+    rk_path = f"{out_root}/docs/ranked_{mode}.tsv"
+    if os.path.exists(rk_path):
+        rk = pd.read_csv(rk_path, sep="\t")
+        rows += [f"| Priority tier {t} (see docs/methods.md, section 6) | {n} |" for t, n in rk["tier"].value_counts().sort_index().items()]
+        top = rk.head(20)
+    else:
+        top = ev.sort_values("site_pvalue").drop_duplicates("gene_id").head(20)
+    top_rows = [f"| {r.gene_id} | {r.feature_id} | {r.site_location} | {r.usage_BSF:.2f} | {r.usage_PCF:.2f} | {r.usage_change_points:+.0f} | {r.label} |"
+                for r in top.itertuples()]
+    return rows, ev_rows, perm_text, top_rows, len(ev), ev["gene_id"].nunique()
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--results", default="results/v2")
+    ap.add_argument("--out", required=True)
+    args = ap.parse_args()
+    R = args.results
+    L = ["# Results", "",
+         f"Generated by scripts/24_summary_v2.py from two recorded runs: the usage analysis (`{R}/docs/run_manifest.json`)",
+         f"and the interpretation stages (`{R}/docs/run_manifest_interpretation.json`). The method is",
+         "specified in docs/methods.md. Terms: a **window** is the span in which a gene's poly(A) read ends are counted (CDS",
+         "5' end to the end of the longest full-length read, or to the next CDS); an **end cluster** is a range where ends",
+         "pile up, found from the pooled ends of all six replicates without reading the stage; **other** holds the ends in no",
+         "cluster; a **supported** gene or cluster passes stageR at a gene-level overall false discovery rate (OFDR) of 5",
+         "percent in the primary analysis; an **event** is one supported cluster with its interpretation.", "",
+         "## Conclusion", ""]
+    blocks = {m: family_block(m, R) for m in ("nanopore", "intergenic")}
+    nb, ib = blocks["nanopore"], blocks["intergenic"]
+    gn = pd.read_csv(f"{R}/clusters_nanopore_m30p2/dexseq_gene.tsv", sep="\t"); gi = pd.read_csv(f"{R}/clusters_intergenic_m30p2/dexseq_gene.tsv", sep="\t")
+    sn, si = set(gn.loc[gn["gene_confirmed"], "gene_id"]), set(gi.loc[gi["gene_confirmed"], "gene_id"])
+    evn = pd.read_csv(f"{R}/docs/events_nanopore.tsv", sep="\t")
+    ab = pd.read_csv(f"{R}/transcripts/transcript_abundance.tsv", sep="\t")
+    fam_n = pd.read_csv(f"{R}/family/family_nanopore.tsv", sep="\t"); fam_i = pd.read_csv(f"{R}/family/family_intergenic.tsv", sep="\t")
+    se_n = f"{R}/docs/strong_end_usage_nanopore.tsv"
+    if os.path.exists(se_n):
+        se = pd.read_csv(se_n, sep="\t"); se_i = pd.read_csv(f"{R}/docs/strong_end_usage_intergenic.tsv", sep="\t")
+        xn, mn = int(se["strong_end_usage"].sum()), len(se)
+        both = len(set(se.loc[se["strong_end_usage"], "gene_id"]) & set(se_i.loc[se_i["strong_end_usage"], "gene_id"]))
+        L += [f"**Among {mn} adequately measured genes, {xn} show strong evidence of a different 3' end between bloodstream and procyclic forms**, "
+              "based on replicate-aware changes in the end proportions of the reads that carry the gene (reads covering its CDS) and "
+              "predefined criteria for effect size (30 points of usage), reproducibility (replicates separated; same cluster, same "
+              f"direction under two other cluster definitions) and origin (20 or more such reads at the cluster). {both} of them are "
+              f"found again with the intergenic windows. The list is `docs/v2/strong_end_usage_nanopore.tsv`; the figures are in "
+              "`docs/v2/figures/index_strong.html`. The broader discovery lists below are the candidates this rule was applied to.", ""]
+    L += [f"In a prespecified family of {int(fam_n['in_family'].sum())} genes (nanopore windows) and {int(fam_i['in_family'].sum())} genes",
+          f"(intergenic windows) with at least 10 poly(A) read ends in every replicate, end clusters were defined from the pooled",
+          f"ends of all replicates and tested for a change in relative usage between bloodstream (BSF) and procyclic (PCF) forms",
+          f"with DEXSeq and stageR. {len(sn)} nanopore-window genes and {len(si)} intergenic-window genes are supported at a nominal",
+          f"gene-level OFDR of 5 percent, {len(sn & si)} in both. The two window types are separate families of hypotheses; no rate",
+          "is claimed for their union.", "",
+          f"The {nb[4]} supported nanopore clusters are interpreted one by one: " +
+          ", ".join(f"{v} {k}" for k, v in evn["label"].value_counts().items()) + ".",
+          "A gene has no class; the labels belong to sites. Transcript-associated means a catalogue transcript, an annotated",
+          "non-coding RNA or a trans-splice acceptor cluster downstream of the CDS ends at the site; mixed means that and a share",
+          "of reads linked to the gene; unresolved means the reads do not settle it. Informative reads are those whose 5' end",
+          "was recovered (spliced leader detected, or start at the annotated transcript start). A sensitivity run that also",
+          "counts reproducible alignment starts as informative is reported separately.", "",
+          f"Independent transcripts (full-length reads outside any CDS, plus annotated non-coding RNAs) form their own family of",
+          f"{len(ab)} records with enough full-length reads; {int(ab['abundance_changed'].sum())} change in relative abundance between",
+          "stages (edgeR, BH 5 percent over that family). This is the only test behind any statement that a non-coding RNA changes",
+          f"abundance. Of the nanopore events with a catalogue record at their end, "
+          f"{int((evn['catalogue_record'].fillna('') != '').sum())} have one, {int(evn['catalogue_abundance'].fillna('').str.contains('FDR').sum())} of those records were testable and "
+          f"{int(evn['catalogue_abundance'].fillna('').str.contains('changed').sum())} change in abundance.", "",
+          "The procedure was frozen before this run (docs/methods.md). The 5 percent is the nominal OFDR of that procedure under its",
+          "assumptions (the six libraries are exchangeable apart from stage; DEXSeq's negative-binomial model with trend-shrunk",
+          "dispersions). Calibration was not verified: with three replicates per stage no permutation test can do so. " + nb[2], "",
+          ""]
+    for mode, b in blocks.items():
+        L += [f"## {mode.capitalize()} windows", "", "| Measure | Value |", "|---|---|"] + b[0] + ["",
+              f"### Events ({b[4]} supported clusters in {b[5]} genes)", "", "| Label | Clusters |", "|---|---|"] + b[1] + ["",
+              "### Strongest site of the 20 highest-ranked supported genes (tier, then size of change)", "",
+              "| Gene | Cluster | Location | Usage BSF | Usage PCF | Change (points) | Label |", "|---|---|---|---|---|---|---|"] + b[3] + ["",
+              "### Permutation diagnostic", "", b[2], ""]
+    # Part 7: gene-assigned usage and the strong-evidence count
+    se_path = f"{R}/docs/strong_end_usage_nanopore.tsv"
+    if os.path.exists(se_path):
+        L += ["## Gene-assigned end usage and the count of genes with strong evidence (Part 7)", "",
+              "The window test compares a cluster with the rest of its window, and a window can hold ends of other transcripts.",
+              "The gene-assigned analysis counts only reads assigned to the gene: at least 50 aligned bases inside the gene's CDS,",
+              "mapping quality 20 or more, no secondary alignment scoring at least as high as the primary, and no other CDS covered",
+              "on the same strand. Such a read carries the gene's coding sequence at a placement no other placement matches, so its",
+              "end is taken as an end of the gene's transcript, as far as the alignments can tell; reads of uncertain origin are set",
+              "aside with their reason. Same windows, same clusters, same model. A gene is flagged **strong end usage** when at least one supported cluster changes by 30 or more points of",
+              "gene-assigned usage with the replicates separated, the same cluster changes in the same direction under both other",
+              "cluster settings, and the cluster holds 20 or more assigned ends (docs/methods.md, section 7). The flag is a fixed",
+              "evidence filter on top of the stageR result; it carries no error rate of its own. Ends inside the CDS count as",
+              "alternative 3' ends, not as alternative 3' UTRs.", ""]
+        for mode in ("nanopore", "intergenic"):
+            se = pd.read_csv(f"{R}/docs/strong_end_usage_{mode}.tsv", sep="	")
+            ga = pd.read_csv(f"{R}/gene_assigned_{mode}_m30p2/windows.tsv", sep="	")
+            gsup = pd.read_csv(f"{R}/docs/support_by_setting_gene_assigned_{mode}.tsv", sep="	")
+            wg = pd.read_csv(f"{R}/clusters_{mode}_m30p2/dexseq_gene.tsv", sep="	")
+            wsup = set(wg.loc[wg["gene_confirmed"], "gene_id"])
+            x = int(se["strong_end_usage"].sum()); m = len(se)
+            flagged = se[se["strong_end_usage"]]
+            L += [f"### {mode.capitalize()} windows" + (" (primary)" if mode == "nanopore" else " (sensitivity to the window choice)"), "",
+                  "| Measure | Value |", "|---|---|",
+                  f"| Family genes | {len(ga)} |",
+                  f"| Not eligible: {ga.loc[~ga['testable'], 'exclusion_reason'].value_counts().index[0]} | {int(ga.loc[~ga['testable'], 'exclusion_reason'].value_counts().iloc[0])} |",
+                  f"| Not eligible: {ga.loc[~ga['testable'], 'exclusion_reason'].value_counts().index[1]} | {int(ga.loc[~ga['testable'], 'exclusion_reason'].value_counts().iloc[1])} |",
+                  f"| Eligible genes, M (10 assigned ends per replicate, two supported clusters) | {m} |",
+                  f"| Supported genes (gene-assigned counts, stageR, nominal gene-level OFDR 5 percent) | {int(se['gene_supported'].sum())} |",
+                  f"| Of these, also supported in the window analysis | {int((se['gene_supported'] & se['gene_id'].isin(wsup)).sum())} |",
+                  f"| Supported in the gene-assigned analysis under all three cluster settings | {int(gsup['supported_in_all_analyses'].sum())} |",
+                  f"| **Genes with strong end usage, X** | **{x}** of {m} |",
+                  f"| Of these, used more in PCF / in BSF at the qualifying cluster | {int((flagged['assigned_change_points'] > 0).sum())} / {int((flagged['assigned_change_points'] < 0).sum())} |",
+                  f"| Of these, qualifying cluster inside the CDS | {int(flagged['feature_id'].str.contains('_-').sum())} |",
+                  f"| Of these, in the window analysis' tier 1 | {int(flagged['gene_id'].isin(pd.read_csv(f'{R}/docs/ranked_{mode}.tsv', sep=chr(9)).query('tier == 1')['gene_id']).sum()) if os.path.exists(f'{R}/docs/ranked_{mode}.tsv') else ''} |", ""]
+            unc_cols = [c for c in ga.columns if c.startswith("uncertain_")]
+            L += ["Reads of the family by the outcome of the assignment rule (every read with the step 02 eligibility whose end lies in a window):", "",
+                  "| Outcome | Reads |", "|---|---|", f"| Assigned to the gene | {int(ga['pooled_ends'].sum())} |"] + \
+                 [f"| Uncertain: {c[len('uncertain_'):].replace('_', ' ')} | {int(ga[c].sum())} |" for c in unc_cols] + [""]
+            rk_p = f"{R}/docs/ranked_{mode}.tsv"
+            if os.path.exists(rk_p):
+                t1 = set(pd.read_csv(rk_p, sep="\t").query("tier == 1")["gene_id"])
+                elig = set(se["gene_id"]); flg = set(flagged["gene_id"])
+                not_elig = ga[ga["gene"].isin(t1 - elig)]["exclusion_reason"].value_counts()
+                L += [f"Of the {len(t1)} tier 1 genes of the window analysis, {len(t1 & flg)} are flagged, {len(t1 - elig)} are not eligible here "
+                      f"({'; '.join(f'{v} with {k}' for k, v in not_elig.items())}) and {len((t1 & elig) - flg)} are eligible but fail a criterion. "
+                      "A gene that is not eligible is not refuted: the reads that cover its CDS are too few in a replicate, or its second end "
+                      "is seen only in reads of uncertain origin. The gene-assigned analysis uses fewer reads, so it is less sensitive than the "
+                      "window analysis; X counts the genes whose own reads carry the evidence.", ""]
+            fails = se.loc[~se["strong_end_usage"] & se["gene_supported"], "reason_not_strong"].value_counts().head(8)
+            L += ["Supported genes that are not flagged, by the first reason recorded for their best cluster:", "", "| Reason | Genes |", "|---|---|"]
+            L += [f"| {k} | {v} |" for k, v in fails.items()] + [""]
+            L += ["Flagged genes, by size of the gene-assigned change:", "",
+                  "| Gene | Cluster | Location | Assigned usage BSF | PCF | Change (points) | Window change | Assigned ends in cluster (share) | Label (window analysis) |",
+                  "|---|---|---|---|---|---|---|---|---|"]
+            L += [f"| {r.gene_id} | {r.feature_id} | {r.site_location} | {r.assigned_usage_BSF:.2f} | {r.assigned_usage_PCF:.2f} | {r.assigned_change_points:+.0f} | "
+                  f"{(f'{float(r.window_change_points):+.0f}' if str(r.window_change_points) not in ('', 'nan') else 'not tested')} | {r.assigned_ends_in_cluster} ({r.assigned_share}) | {r.label_window_analysis or 'none'} |"
+                  for r in flagged.itertuples()] + [""]
+    ms_p = f"{R}/docs/mapq_sensitivity_nanopore.tsv"
+    if os.path.exists(ms_p):
+        ms = pd.read_csv(ms_p, sep="\t")
+        L += ["### Sensitivity of X to the mapping-confidence requirement (nanopore family)", "",
+              "The primary rule requires mapping quality 20 or more and no secondary alignment scoring at least as high as the primary.",
+              "The variants were fixed in the plan before they were run; each reruns steps 28, 18 and 29 under all three cluster settings.",
+              "The table does not change the primary rule.", "",
+              f"{int(ms['in_every_run'].iloc[0])} of the {int(ms['strong_X'].iloc[0])} primary genes are flagged under every rule"
+              + (f" (not everywhere: {str(ms['primary_genes_not_in_every_run'].iloc[0]).replace(';', ', ')})." if str(ms['primary_genes_not_in_every_run'].iloc[0]) not in ('', 'nan') else "."), "",
+              "| Rule | Mapping quality | Secondary rule | Assigned reads | Eligible M | Supported | X | Lost against the primary set | Gained |",
+              "|---|---|---|---|---|---|---|---|---|"]
+        L += [f"| {r.rule} | {r.min_mapq} | {r.secondary_rule} | {r.assigned_reads} | {r.eligible_M} | {r.supported} | {r.strong_X} | "
+              f"{r.lost_vs_primary}{(' (' + str(r.lost_genes).replace(';', ', ') + ')') if r.lost_vs_primary else ''} | "
+              f"{r.gained_vs_primary}{(' (' + str(r.gained_genes).replace(';', ', ') + ')') if r.gained_vs_primary else ''} |" for r in ms.itertuples()] + [""]
+    L += ["## Independent transcript abundance", "", "| Measure | Value |", "|---|---|",
+          f"| Records tested (5 full-length reads in 2 replicates) | {len(ab)} |",
+          f"| Records changing at BH FDR 5 percent | {int(ab['abundance_changed'].sum())} |",
+          f"| Of these, annotated non-coding RNAs | {int((ab['abundance_changed'] & ab['annotated'].notna() & (ab['annotated'] != '')).sum())} |", ""]
+    open(args.out, "w").write("\n".join(L))
+    print(f"wrote {args.out}")
+
+
+if __name__ == "__main__":
+    main()

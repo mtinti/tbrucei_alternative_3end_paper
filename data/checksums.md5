@@ -1,0 +1,15 @@
+a2793cb78993b81ff60c6b379156c7ee  annotation/merged_fixed_6.gtf.gz
+072baea640e501cc381f27e408322c9b  annotation/ensembl116_noncoding_genes.bed
+707bbaba070e01a691c2db23135e2b7d  genome/tb927_56.fa.gz
+85788b111d3d4585a4fa4bf69000cde3  end_sites/bs_rep_1.end_sites.bed.gz
+1d314af17dd3726fa5632b503f0cc24f  end_sites/bs_rep_2.end_sites.bed.gz
+1580cf5fe509ea632212e281965a49e8  end_sites/bs_rep_3.end_sites.bed.gz
+75f1a30acaa8776842b0e665c4c73de4  end_sites/pc_rep_1.end_sites.bed.gz
+fc89661b3d8094e4005f96e55b5a2fe3  end_sites/pc_rep_2.end_sites.bed.gz
+15c2ffc970b3e2c15c8db4c8d86d9645  end_sites/pc_rep_3.end_sites.bed.gz
+2ce2e11979a019175f50afc5270ec460  read_ids/bs_rep_1.polyA_read_ids.txt.gz
+a6ba62a7e1409cf3225a226f632f232a  read_ids/bs_rep_2.polyA_read_ids.txt.gz
+acc631263483d94b2e238cd850ed0ad1  read_ids/bs_rep_3.polyA_read_ids.txt.gz
+1072693faaf6d8f78c29cfeee74b9bf8  read_ids/pc_rep_1.polyA_read_ids.txt.gz
+7558d110b4d14b2fca6909abd6eb4f8c  read_ids/pc_rep_2.polyA_read_ids.txt.gz
+ffada6eab8add8c52f4c1e7b1ba76652  read_ids/pc_rep_3.polyA_read_ids.txt.gz

@@ -1,0 +1,6 @@
+results/
+zenodo/
+data/bam/*.bam
+data/bam/*.bai
+.DS_Store
+__pycache__/
