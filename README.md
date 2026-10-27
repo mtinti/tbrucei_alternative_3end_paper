@@ -134,7 +134,13 @@ slower but gives the same results.
    ```
    git clone https://github.com/mtinti/tbrucei_alternative_3end_paper.git
    cd tbrucei_alternative_3end_paper
-   # copy the four .bam files and their .bai indexes from the Zenodo record into data/bam/
+   # the eight bam__* files of the Zenodo record (doi:10.5281/zenodo.23697408), without the prefix
+   for f in bs.filter_polyA_tb927 bs.filter_polyA_SL_tb927 pc.filter_polyA_tb927 pc.filter_polyA_SL_tb927; do
+     for e in bam bam.bai; do
+       curl -L -o data/bam/$f.sorted.$e "https://zenodo.org/records/23697408/files/bam__$f.sorted.$e?download=1"
+     done
+   done
+   md5sum -c data/bam/checksums.md5
    ```
 
 2. Build the image (about 10 minutes, once):
@@ -196,11 +202,9 @@ Makefile         the commands run by make all
 | Data | Repository | Accession |
 |---|---|---|
 | Direct RNA nanopore reads, 6 runs | European Nucleotide Archive | ERR10957780 to ERR10957785 (`upstream/README.md` maps runs to replicates) |
-| Alignment files (4 BAM), complete results of one run, figures of every supported gene | Zenodo | (to be assigned; the code record is [doi:10.5281/zenodo.23697376](https://doi.org/10.5281/zenodo.23697376)) |
+| Alignment files (4 BAM), complete results of one run, figures of every supported gene | Zenodo | [doi:10.5281/zenodo.23697408](https://doi.org/10.5281/zenodo.23697408) (files `bam__*` go in `data/bam/` without the prefix) |
 
-Until the Zenodo record exists, the four alignment files are not
-downloadable and `make all` cannot run outside the authors' machines. The
-tables in `expected/` and the figures are complete.
+The code is archived at [doi:10.5281/zenodo.23697376](https://doi.org/10.5281/zenodo.23697376).
 
 `scripts/make_zenodo_archive.sh` builds the Zenodo data archive from a
 complete run.
