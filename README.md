@@ -140,7 +140,7 @@ slower but gives the same results.
        curl -L -o data/bam/$f.sorted.$e "https://zenodo.org/records/23697408/files/bam__$f.sorted.$e?download=1"
      done
    done
-   md5sum -c data/bam/checksums.md5
+   (cd data/bam && md5sum -c checksums.md5)
    ```
 
 2. Build the image (about 10 minutes, once):
