@@ -198,9 +198,9 @@ Makefile         the commands run by make all
 | Direct RNA nanopore reads, 6 runs | European Nucleotide Archive | ERR10957780 to ERR10957785 (`upstream/README.md` maps runs to replicates) |
 | Alignment files (4 BAM), complete results of one run, figures of every supported gene | Zenodo | (to be assigned) |
 
-This is a staged release: until the Zenodo record exists, the four alignment
-files are not downloadable and `make all` cannot run outside the authors'
-machines. The tables in `expected/` and the figures are complete.
+Until the Zenodo record exists, the four alignment files are not
+downloadable and `make all` cannot run outside the authors' machines. The
+tables in `expected/` and the figures are complete.
 
 `scripts/make_zenodo_archive.sh` builds the Zenodo data archive from a
 complete run.
