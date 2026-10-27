@@ -7,7 +7,7 @@ authors:
     given-names: Michele
     affiliation: University of Dundee
     orcid: "https://orcid.org/0000-0002-0051-017X"
-version: 1.0.0
+version: 1.0.1
 doi: 10.5281/zenodo.23697376
 identifiers:
   - type: doi
