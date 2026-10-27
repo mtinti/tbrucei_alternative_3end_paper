@@ -8,7 +8,15 @@ authors:
     affiliation: University of Dundee
     orcid: "https://orcid.org/0000-0002-0051-017X"
 version: 1.0.0
-date-released: 2026-10-26
+doi: 10.5281/zenodo.23697376
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23697376
+    description: the code, all versions
+  - type: doi
+    value: 10.5281/zenodo.23697377
+    description: version 1.0.0
+date-released: 2026-10-27
 repository-code: "https://github.com/mtinti/tbrucei_alternative_3end_paper"
 license: MIT
 keywords:

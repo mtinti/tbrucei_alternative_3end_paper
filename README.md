@@ -196,7 +196,7 @@ Makefile         the commands run by make all
 | Data | Repository | Accession |
 |---|---|---|
 | Direct RNA nanopore reads, 6 runs | European Nucleotide Archive | ERR10957780 to ERR10957785 (`upstream/README.md` maps runs to replicates) |
-| Alignment files (4 BAM), complete results of one run, figures of every supported gene | Zenodo | (to be assigned) |
+| Alignment files (4 BAM), complete results of one run, figures of every supported gene | Zenodo | (to be assigned; the code record is [doi:10.5281/zenodo.23697376](https://doi.org/10.5281/zenodo.23697376)) |
 
 Until the Zenodo record exists, the four alignment files are not
 downloadable and `make all` cannot run outside the authors' machines. The
@@ -213,7 +213,8 @@ complete run.
   (the sequencing data).
 - Tinti M. tbrucei_alternative_3end_paper: code and data for the analysis of
   alternative 3' end usage between *Trypanosoma brucei* life stages from
-  direct RNA nanopore sequencing. Zenodo (DOI to be assigned).
+  direct RNA nanopore sequencing. Zenodo. [doi:10.5281/zenodo.23697376](https://doi.org/10.5281/zenodo.23697376)
+  (the code, all versions; v1.0.0 is [doi:10.5281/zenodo.23697377](https://doi.org/10.5281/zenodo.23697377)).
 
 `CITATION.cff` has the same information in machine-readable form.
 
